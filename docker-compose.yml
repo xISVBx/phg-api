@@ -1,0 +1,66 @@
+services:
+  db:
+    image: postgres:16
+    container_name: photogallery_db
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER:-postgres}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-postgres}
+      POSTGRES_DB: ${POSTGRES_DB:-photogallery}
+    ports:
+      - "${POSTGRES_PORT:-5432}:5432"
+    volumes:
+      - pg_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER:-postgres} -d ${POSTGRES_DB:-photogallery}"]
+      interval: 5s
+      timeout: 5s
+      retries: 20
+    restart: unless-stopped
+
+  pgadmin:
+    image: dpage/pgadmin4:8
+    container_name: photogallery_pgadmin
+    environment:
+      PGADMIN_DEFAULT_EMAIL: ${PGADMIN_DEFAULT_EMAIL:-admin@photogallery.com}
+      PGADMIN_DEFAULT_PASSWORD: ${PGADMIN_DEFAULT_PASSWORD:-admin123}
+      PGADMIN_CONFIG_SERVER_MODE: 'False'
+      PGADMIN_CONFIG_MASTER_PASSWORD_REQUIRED: 'False'
+    ports:
+      - "${PGADMIN_PORT:-5050}:80"
+    depends_on:
+      db:
+        condition: service_healthy
+    volumes:
+      - pgadmin_data:/var/lib/pgadmin
+      - ./docker/pgadmin/servers.json:/pgadmin4/servers.json:ro
+      - ./docker/pgadmin/pgpass:/pgpass:ro
+    restart: unless-stopped
+
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: photogallery_api
+    environment:
+      APP_ENV: ${APP_ENV:-docker}
+      APP_PORT: 8080
+      JWT_SECRET: ${JWT_SECRET:-change_this_secret}
+      JWT_EXPIRE_SECONDS: ${JWT_EXPIRE_SECONDS:-3600}
+      DATABASE_DSN: host=db user=${POSTGRES_USER:-postgres} password=${POSTGRES_PASSWORD:-postgres} dbname=${POSTGRES_DB:-photogallery} port=5432 sslmode=disable
+      FILES_BASE_PATH: /data/storage
+      FILES_MAX_SIZE_MB: ${FILES_MAX_SIZE_MB:-25}
+      FILES_ALLOWED_MIME: ${FILES_ALLOWED_MIME:-image/jpeg,image/png,application/pdf}
+      CUSTOMER_KEY_MODE: ${CUSTOMER_KEY_MODE:-both}
+    ports:
+      - "${APP_PORT:-8080}:8080"
+    depends_on:
+      db:
+        condition: service_healthy
+    volumes:
+      - app_storage:/data/storage
+    restart: unless-stopped
+
+volumes:
+  pg_data:
+  pgadmin_data:
+  app_storage:

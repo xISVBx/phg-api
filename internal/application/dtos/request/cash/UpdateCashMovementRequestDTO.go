@@ -1,0 +1,3 @@
+package cash
+
+type UpdateCashMovementRequestDTO = CreateCashMovementRequestDTO

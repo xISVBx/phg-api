@@ -1,0 +1,3 @@
+package appointment
+
+type UpdateAppointmentRequestDTO = CreateAppointmentRequestDTO

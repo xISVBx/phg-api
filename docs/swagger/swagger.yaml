@@ -1,0 +1,4658 @@
+basePath: /
+definitions:
+  internal_web_controllers_http.SwaggerAppointmentListResponse:
+    properties:
+      data:
+        items:
+          $ref: '#/definitions/photogallery_api_go_internal_domain_entities.Appointment'
+        type: array
+      meta:
+        $ref: '#/definitions/internal_web_controllers_http.SwaggerMeta'
+    type: object
+  internal_web_controllers_http.SwaggerAppointmentResponse:
+    properties:
+      data:
+        $ref: '#/definitions/photogallery_api_go_internal_domain_entities.Appointment'
+    type: object
+  internal_web_controllers_http.SwaggerAuditListResponse:
+    properties:
+      data:
+        items:
+          $ref: '#/definitions/photogallery_api_go_internal_domain_entities.AuditLog'
+        type: array
+      meta:
+        $ref: '#/definitions/internal_web_controllers_http.SwaggerMeta'
+    type: object
+  internal_web_controllers_http.SwaggerAuditResponse:
+    properties:
+      data:
+        $ref: '#/definitions/photogallery_api_go_internal_domain_entities.AuditLog'
+    type: object
+  internal_web_controllers_http.SwaggerAuthLoginData:
+    properties:
+      accessToken:
+        type: string
+      expiresIn:
+        type: integer
+      refreshToken:
+        type: string
+      user:
+        $ref: '#/definitions/internal_web_controllers_http.SwaggerAuthUser'
+    type: object
+  internal_web_controllers_http.SwaggerAuthLoginResponse:
+    properties:
+      data:
+        $ref: '#/definitions/internal_web_controllers_http.SwaggerAuthLoginData'
+    type: object
+  internal_web_controllers_http.SwaggerAuthMeResponse:
+    properties:
+      data:
+        $ref: '#/definitions/photogallery_api_go_internal_application_dtos_responses_auth.MeResponseDTO'
+    type: object
+  internal_web_controllers_http.SwaggerAuthUser:
+    properties:
+      fullName:
+        type: string
+      id:
+        type: string
+    type: object
+  internal_web_controllers_http.SwaggerBackupData:
+    properties:
+      status:
+        type: string
+    type: object
+  internal_web_controllers_http.SwaggerBackupResponse:
+    properties:
+      data:
+        $ref: '#/definitions/internal_web_controllers_http.SwaggerBackupData'
+    type: object
+  internal_web_controllers_http.SwaggerCashCategoryListResponse:
+    properties:
+      data:
+        items:
+          $ref: '#/definitions/photogallery_api_go_internal_domain_entities.CashCategory'
+        type: array
+      meta:
+        $ref: '#/definitions/internal_web_controllers_http.SwaggerMeta'
+    type: object
+  internal_web_controllers_http.SwaggerCashCategoryResponse:
+    properties:
+      data:
+        $ref: '#/definitions/photogallery_api_go_internal_domain_entities.CashCategory'
+    type: object
+  internal_web_controllers_http.SwaggerCashMovementListResponse:
+    properties:
+      data:
+        items:
+          $ref: '#/definitions/photogallery_api_go_internal_domain_entities.CashMovement'
+        type: array
+      meta:
+        $ref: '#/definitions/internal_web_controllers_http.SwaggerMeta'
+    type: object
+  internal_web_controllers_http.SwaggerCashMovementResponse:
+    properties:
+      data:
+        $ref: '#/definitions/photogallery_api_go_internal_domain_entities.CashMovement'
+    type: object
+  internal_web_controllers_http.SwaggerCategoryListResponse:
+    properties:
+      data:
+        items:
+          $ref: '#/definitions/photogallery_api_go_internal_domain_entities.Category'
+        type: array
+      meta:
+        $ref: '#/definitions/internal_web_controllers_http.SwaggerMeta'
+    type: object
+  internal_web_controllers_http.SwaggerCategoryResponse:
+    properties:
+      data:
+        $ref: '#/definitions/photogallery_api_go_internal_domain_entities.Category'
+    type: object
+  internal_web_controllers_http.SwaggerChangePasswordRequest:
+    properties:
+      newPassword:
+        minLength: 6
+        type: string
+      oldPassword:
+        type: string
+    required:
+    - newPassword
+    - oldPassword
+    type: object
+  internal_web_controllers_http.SwaggerCreateAppointmentRequest:
+    properties:
+      customerId:
+        type: string
+      endsAtUtc:
+        type: string
+      notes:
+        type: string
+      productId:
+        type: string
+      saleId:
+        type: string
+      startsAtUtc:
+        type: string
+      status:
+        type: string
+    required:
+    - customerId
+    - productId
+    - startsAtUtc
+    type: object
+  internal_web_controllers_http.SwaggerCreateCashCategoryRequest:
+    properties:
+      name:
+        type: string
+      type:
+        type: string
+    required:
+    - name
+    - type
+    type: object
+  internal_web_controllers_http.SwaggerCreateCashMovementRequest:
+    properties:
+      amount:
+        type: number
+      categoryId:
+        type: string
+      method:
+        type: string
+      notes:
+        type: string
+      reference:
+        type: string
+      relatedEntityId:
+        type: string
+      relatedEntityType:
+        type: string
+      type:
+        type: string
+    required:
+    - amount
+    - categoryId
+    - method
+    - type
+    type: object
+  internal_web_controllers_http.SwaggerCreateCategoryRequest:
+    properties:
+      description:
+        type: string
+      name:
+        type: string
+    required:
+    - name
+    type: object
+  internal_web_controllers_http.SwaggerCreateCustomerRequest:
+    properties:
+      customerCode:
+        type: string
+      document:
+        type: string
+      email:
+        type: string
+      fullName:
+        type: string
+      notes:
+        type: string
+      phone:
+        type: string
+    required:
+    - fullName
+    type: object
+  internal_web_controllers_http.SwaggerCreateProductRequest:
+    properties:
+      basePrice:
+        type: number
+      categoryId:
+        type: string
+      commissionType:
+        type: string
+      commissionValue:
+        type: number
+      cost:
+        type: number
+      defaultLeadDays:
+        type: integer
+      name:
+        type: string
+      notes:
+        type: string
+      requiresDelivery:
+        type: boolean
+      type:
+        type: string
+    required:
+    - categoryId
+    - name
+    - type
+    type: object
+  internal_web_controllers_http.SwaggerCreateSaleRequest:
+    properties:
+      customerId:
+        type: string
+      items:
+        items:
+          $ref: '#/definitions/photogallery_api_go_internal_application_dtos_request_sales.CreateSaleItemRequestDTO'
+        minItems: 1
+        type: array
+      notifyOptIn:
+        type: boolean
+    required:
+    - items
+    type: object
+  internal_web_controllers_http.SwaggerCreateUserRequest:
+    properties:
+      email:
+        type: string
+      fullName:
+        type: string
+      password:
+        minLength: 6
+        type: string
+      permissions:
+        items:
+          $ref: '#/definitions/photogallery_api_go_internal_application_dtos_request_security.RolePermissionSetItemDTO'
+        type: array
+      phone:
+        type: string
+      roleId:
+        type: string
+      username:
+        type: string
+    required:
+    - fullName
+    - password
+    - permissions
+    - roleId
+    - username
+    type: object
+  internal_web_controllers_http.SwaggerCreateWorkOrderRequest:
+    properties:
+      dueDateUtc:
+        type: string
+      notes:
+        type: string
+      responsibleUserId:
+        type: string
+      saleId:
+        type: string
+      status:
+        type: string
+    required:
+    - saleId
+    type: object
+  internal_web_controllers_http.SwaggerCreateWorkerRequest:
+    properties:
+      email:
+        type: string
+      fixedSalary:
+        type: number
+      fullName:
+        type: string
+      notes:
+        type: string
+      phone:
+        type: string
+      salaryPeriod:
+        type: string
+    required:
+    - fullName
+    type: object
+  internal_web_controllers_http.SwaggerCustomerListResponse:
+    properties:
+      data:
+        items:
+          $ref: '#/definitions/photogallery_api_go_internal_domain_entities.Customer'
+        type: array
+      meta:
+        $ref: '#/definitions/internal_web_controllers_http.SwaggerMeta'
+    type: object
+  internal_web_controllers_http.SwaggerCustomerResponse:
+    properties:
+      data:
+        $ref: '#/definitions/photogallery_api_go_internal_domain_entities.Customer'
+    type: object
+  internal_web_controllers_http.SwaggerErrorResponse:
+    properties:
+      code:
+        type: string
+      detail:
+        type: string
+      errors:
+        items:
+          type: string
+        type: array
+      instance:
+        type: string
+      status:
+        type: integer
+      title:
+        type: string
+      type:
+        type: string
+    type: object
+  internal_web_controllers_http.SwaggerFileListResponse:
+    properties:
+      data:
+        items:
+          $ref: '#/definitions/photogallery_api_go_internal_domain_entities.File'
+        type: array
+      meta:
+        $ref: '#/definitions/internal_web_controllers_http.SwaggerMeta'
+    type: object
+  internal_web_controllers_http.SwaggerFileResponse:
+    properties:
+      data:
+        $ref: '#/definitions/photogallery_api_go_internal_domain_entities.File'
+    type: object
+  internal_web_controllers_http.SwaggerHealthData:
+    properties:
+      status:
+        type: string
+      timeUtc:
+        type: string
+      version:
+        type: string
+    type: object
+  internal_web_controllers_http.SwaggerHealthResponse:
+    properties:
+      data:
+        $ref: '#/definitions/internal_web_controllers_http.SwaggerHealthData'
+    type: object
+  internal_web_controllers_http.SwaggerLoginRequest:
+    properties:
+      password:
+        type: string
+      username:
+        type: string
+    required:
+    - password
+    - username
+    type: object
+  internal_web_controllers_http.SwaggerMenuListResponse:
+    properties:
+      data:
+        items:
+          $ref: '#/definitions/photogallery_api_go_internal_domain_entities.Menu'
+        type: array
+      meta:
+        $ref: '#/definitions/internal_web_controllers_http.SwaggerMeta'
+    type: object
+  internal_web_controllers_http.SwaggerMenuRequest:
+    properties:
+      code:
+        type: string
+      createdAtUtc:
+        type: string
+      displayOrder:
+        type: integer
+      id:
+        type: string
+      isActive:
+        type: boolean
+      name:
+        type: string
+      updatedAtUtc:
+        type: string
+    type: object
+  internal_web_controllers_http.SwaggerMenuResponse:
+    properties:
+      data:
+        $ref: '#/definitions/photogallery_api_go_internal_domain_entities.Menu'
+    type: object
+  internal_web_controllers_http.SwaggerMeta:
+    properties:
+      total:
+        type: integer
+    type: object
+  internal_web_controllers_http.SwaggerOKFlag:
+    properties:
+      ok:
+        type: boolean
+    type: object
+  internal_web_controllers_http.SwaggerOKFlagResponse:
+    properties:
+      data:
+        $ref: '#/definitions/internal_web_controllers_http.SwaggerOKFlag'
+    type: object
+  internal_web_controllers_http.SwaggerOverrideItemRequest:
+    properties:
+      mode:
+        enum:
+        - Grant
+        - Revoke
+        type: string
+      permissionId:
+        type: string
+      subMenuId:
+        type: string
+    required:
+    - mode
+    - permissionId
+    - subMenuId
+    type: object
+  internal_web_controllers_http.SwaggerOverrideListResponse:
+    properties:
+      data:
+        items:
+          $ref: '#/definitions/photogallery_api_go_internal_domain_entities.UserPermissionOverride'
+        type: array
+    type: object
+  internal_web_controllers_http.SwaggerOverrideResponse:
+    properties:
+      data:
+        $ref: '#/definitions/photogallery_api_go_internal_domain_entities.UserPermissionOverride'
+    type: object
+  internal_web_controllers_http.SwaggerPayCommissionRequest:
+    properties:
+      amount:
+        type: number
+      method:
+        type: string
+      notes:
+        type: string
+      workerId:
+        type: string
+    required:
+    - amount
+    - method
+    - workerId
+    type: object
+  internal_web_controllers_http.SwaggerPaySalaryRequest:
+    properties:
+      amount:
+        type: number
+      method:
+        type: string
+      notes:
+        type: string
+      workerId:
+        type: string
+    required:
+    - amount
+    - method
+    - workerId
+    type: object
+  internal_web_controllers_http.SwaggerPermissionListResponse:
+    properties:
+      data:
+        items:
+          $ref: '#/definitions/photogallery_api_go_internal_domain_entities.Permission'
+        type: array
+      meta:
+        $ref: '#/definitions/internal_web_controllers_http.SwaggerMeta'
+    type: object
+  internal_web_controllers_http.SwaggerPermissionRequest:
+    properties:
+      code:
+        type: string
+      createdAtUtc:
+        type: string
+      description:
+        type: string
+      id:
+        type: string
+      name:
+        type: string
+      updatedAtUtc:
+        type: string
+    type: object
+  internal_web_controllers_http.SwaggerPermissionResponse:
+    properties:
+      data:
+        $ref: '#/definitions/photogallery_api_go_internal_domain_entities.Permission'
+    type: object
+  internal_web_controllers_http.SwaggerPermissionTreeResponse:
+    properties:
+      data:
+        items:
+          $ref: '#/definitions/photogallery_api_go_internal_application_dtos.EffectivePermissionNode'
+        type: array
+    type: object
+  internal_web_controllers_http.SwaggerProductListResponse:
+    properties:
+      data:
+        items:
+          $ref: '#/definitions/photogallery_api_go_internal_domain_entities.Product'
+        type: array
+      meta:
+        $ref: '#/definitions/internal_web_controllers_http.SwaggerMeta'
+    type: object
+  internal_web_controllers_http.SwaggerProductResponse:
+    properties:
+      data:
+        $ref: '#/definitions/photogallery_api_go_internal_domain_entities.Product'
+    type: object
+  internal_web_controllers_http.SwaggerRefreshRequest:
+    properties:
+      refreshToken:
+        type: string
+    required:
+    - refreshToken
+    type: object
+  internal_web_controllers_http.SwaggerRegisterSalePaymentRequest:
+    properties:
+      amount:
+        type: number
+      method:
+        type: string
+      reference:
+        type: string
+    required:
+    - amount
+    - method
+    type: object
+  internal_web_controllers_http.SwaggerReplaceOverridesRequest:
+    properties:
+      items:
+        items:
+          $ref: '#/definitions/photogallery_api_go_internal_application_dtos_request_security.OverrideItemDTO'
+        type: array
+    type: object
+  internal_web_controllers_http.SwaggerReplaceRolePermissionsRequest:
+    properties:
+      items:
+        items:
+          $ref: '#/definitions/photogallery_api_go_internal_application_dtos_request_security.RolePermissionSetItemDTO'
+        type: array
+    type: object
+  internal_web_controllers_http.SwaggerRoleDetailResponse:
+    properties:
+      data:
+        $ref: '#/definitions/photogallery_api_go_internal_application_dtos_responses_security.RoleResponseDTO'
+    type: object
+  internal_web_controllers_http.SwaggerRoleListResponse:
+    properties:
+      data:
+        items:
+          $ref: '#/definitions/photogallery_api_go_internal_application_dtos_responses_security.RoleResponseDTO'
+        type: array
+      meta:
+        $ref: '#/definitions/internal_web_controllers_http.SwaggerMeta'
+    type: object
+  internal_web_controllers_http.SwaggerRolePermissionsResponse:
+    properties:
+      data:
+        items:
+          $ref: '#/definitions/photogallery_api_go_internal_domain_entities.RoleSubMenuPermission'
+        type: array
+    type: object
+  internal_web_controllers_http.SwaggerRoleRequest:
+    properties:
+      createdAtUtc:
+        type: string
+      description:
+        type: string
+      id:
+        type: string
+      isActive:
+        type: boolean
+      name:
+        type: string
+      updatedAtUtc:
+        type: string
+    type: object
+  internal_web_controllers_http.SwaggerRoleResponse:
+    properties:
+      data:
+        $ref: '#/definitions/photogallery_api_go_internal_domain_entities.Role'
+    type: object
+  internal_web_controllers_http.SwaggerSaleDetailData:
+    properties:
+      items:
+        items:
+          $ref: '#/definitions/photogallery_api_go_internal_domain_entities.SaleItem'
+        type: array
+      payments:
+        items:
+          $ref: '#/definitions/photogallery_api_go_internal_domain_entities.SalePayment'
+        type: array
+      sale:
+        $ref: '#/definitions/photogallery_api_go_internal_domain_entities.Sale'
+    type: object
+  internal_web_controllers_http.SwaggerSaleDetailResponse:
+    properties:
+      data:
+        $ref: '#/definitions/internal_web_controllers_http.SwaggerSaleDetailData'
+    type: object
+  internal_web_controllers_http.SwaggerSaleListResponse:
+    properties:
+      data:
+        items:
+          $ref: '#/definitions/photogallery_api_go_internal_domain_entities.Sale'
+        type: array
+      meta:
+        $ref: '#/definitions/internal_web_controllers_http.SwaggerMeta'
+    type: object
+  internal_web_controllers_http.SwaggerSalePaymentResponse:
+    properties:
+      data:
+        $ref: '#/definitions/photogallery_api_go_internal_domain_entities.SalePayment'
+    type: object
+  internal_web_controllers_http.SwaggerSaleResponse:
+    properties:
+      data:
+        $ref: '#/definitions/photogallery_api_go_internal_domain_entities.Sale'
+    type: object
+  internal_web_controllers_http.SwaggerSetPasswordRequest:
+    properties:
+      newPassword:
+        minLength: 6
+        type: string
+    required:
+    - newPassword
+    type: object
+  internal_web_controllers_http.SwaggerSetPrimaryRoleRequest:
+    properties:
+      primaryRoleId:
+        type: string
+    required:
+    - primaryRoleId
+    type: object
+  internal_web_controllers_http.SwaggerSetSettingRequest:
+    properties:
+      value:
+        type: string
+    required:
+    - value
+    type: object
+  internal_web_controllers_http.SwaggerSettingResponse:
+    properties:
+      data:
+        $ref: '#/definitions/photogallery_api_go_internal_domain_entities.AppSetting'
+    type: object
+  internal_web_controllers_http.SwaggerSubMenuListResponse:
+    properties:
+      data:
+        items:
+          $ref: '#/definitions/photogallery_api_go_internal_domain_entities.SubMenu'
+        type: array
+      meta:
+        $ref: '#/definitions/internal_web_controllers_http.SwaggerMeta'
+    type: object
+  internal_web_controllers_http.SwaggerSubMenuRequest:
+    properties:
+      code:
+        type: string
+      createdAtUtc:
+        type: string
+      displayOrder:
+        type: integer
+      id:
+        type: string
+      isActive:
+        type: boolean
+      menuID:
+        type: string
+      name:
+        type: string
+      route:
+        type: string
+      updatedAtUtc:
+        type: string
+    type: object
+  internal_web_controllers_http.SwaggerSubMenuResponse:
+    properties:
+      data:
+        $ref: '#/definitions/photogallery_api_go_internal_domain_entities.SubMenu'
+    type: object
+  internal_web_controllers_http.SwaggerSystemInfoData:
+    properties:
+      name:
+        type: string
+      timeUtc:
+        type: string
+    type: object
+  internal_web_controllers_http.SwaggerSystemInfoResponse:
+    properties:
+      data:
+        $ref: '#/definitions/internal_web_controllers_http.SwaggerSystemInfoData'
+    type: object
+  internal_web_controllers_http.SwaggerUpdateAppointmentRequest:
+    properties:
+      customerId:
+        type: string
+      endsAtUtc:
+        type: string
+      notes:
+        type: string
+      productId:
+        type: string
+      saleId:
+        type: string
+      startsAtUtc:
+        type: string
+      status:
+        type: string
+    required:
+    - customerId
+    - productId
+    - startsAtUtc
+    type: object
+  internal_web_controllers_http.SwaggerUpdateCashCategoryRequest:
+    properties:
+      name:
+        type: string
+      type:
+        type: string
+    required:
+    - name
+    - type
+    type: object
+  internal_web_controllers_http.SwaggerUpdateCashMovementRequest:
+    properties:
+      amount:
+        type: number
+      categoryId:
+        type: string
+      method:
+        type: string
+      notes:
+        type: string
+      reference:
+        type: string
+      relatedEntityId:
+        type: string
+      relatedEntityType:
+        type: string
+      type:
+        type: string
+    required:
+    - amount
+    - categoryId
+    - method
+    - type
+    type: object
+  internal_web_controllers_http.SwaggerUpdateCategoryRequest:
+    properties:
+      description:
+        type: string
+      name:
+        type: string
+    required:
+    - name
+    type: object
+  internal_web_controllers_http.SwaggerUpdateCustomerRequest:
+    properties:
+      customerCode:
+        type: string
+      document:
+        type: string
+      email:
+        type: string
+      fullName:
+        type: string
+      notes:
+        type: string
+      phone:
+        type: string
+    required:
+    - fullName
+    type: object
+  internal_web_controllers_http.SwaggerUpdateProductRequest:
+    properties:
+      basePrice:
+        type: number
+      categoryId:
+        type: string
+      commissionType:
+        type: string
+      commissionValue:
+        type: number
+      cost:
+        type: number
+      defaultLeadDays:
+        type: integer
+      name:
+        type: string
+      notes:
+        type: string
+      requiresDelivery:
+        type: boolean
+      type:
+        type: string
+    required:
+    - categoryId
+    - name
+    - type
+    type: object
+  internal_web_controllers_http.SwaggerUpdateUserRequest:
+    properties:
+      email:
+        type: string
+      fullName:
+        type: string
+      isActive:
+        type: boolean
+      permissions:
+        items:
+          $ref: '#/definitions/photogallery_api_go_internal_application_dtos_request_security.RolePermissionSetItemDTO'
+        type: array
+      phone:
+        type: string
+      roleId:
+        type: string
+    required:
+    - fullName
+    - permissions
+    - roleId
+    type: object
+  internal_web_controllers_http.SwaggerUpdateWorkOrderRequest:
+    properties:
+      dueDateUtc:
+        type: string
+      notes:
+        type: string
+      responsibleUserId:
+        type: string
+      saleId:
+        type: string
+      status:
+        type: string
+    required:
+    - saleId
+    type: object
+  internal_web_controllers_http.SwaggerUpdateWorkerRequest:
+    properties:
+      email:
+        type: string
+      fixedSalary:
+        type: number
+      fullName:
+        type: string
+      notes:
+        type: string
+      phone:
+        type: string
+      salaryPeriod:
+        type: string
+    required:
+    - fullName
+    type: object
+  internal_web_controllers_http.SwaggerUserListResponse:
+    properties:
+      data:
+        items:
+          $ref: '#/definitions/photogallery_api_go_internal_application_dtos_responses_security.UserResponseDTO'
+        type: array
+      meta:
+        $ref: '#/definitions/internal_web_controllers_http.SwaggerMeta'
+    type: object
+  internal_web_controllers_http.SwaggerUserResponse:
+    properties:
+      data:
+        $ref: '#/definitions/photogallery_api_go_internal_application_dtos_responses_security.UserResponseDTO'
+    type: object
+  internal_web_controllers_http.SwaggerUserRolesResponse:
+    properties:
+      data:
+        items:
+          $ref: '#/definitions/photogallery_api_go_internal_domain_entities.UserRole'
+        type: array
+    type: object
+  internal_web_controllers_http.SwaggerWorkOrderListResponse:
+    properties:
+      data:
+        items:
+          $ref: '#/definitions/photogallery_api_go_internal_domain_entities.WorkOrder'
+        type: array
+      meta:
+        $ref: '#/definitions/internal_web_controllers_http.SwaggerMeta'
+    type: object
+  internal_web_controllers_http.SwaggerWorkOrderResponse:
+    properties:
+      data:
+        $ref: '#/definitions/photogallery_api_go_internal_domain_entities.WorkOrder'
+    type: object
+  internal_web_controllers_http.SwaggerWorkerListResponse:
+    properties:
+      data:
+        items:
+          $ref: '#/definitions/photogallery_api_go_internal_domain_entities.Worker'
+        type: array
+      meta:
+        $ref: '#/definitions/internal_web_controllers_http.SwaggerMeta'
+    type: object
+  internal_web_controllers_http.SwaggerWorkerResponse:
+    properties:
+      data:
+        $ref: '#/definitions/photogallery_api_go_internal_domain_entities.Worker'
+    type: object
+  photogallery_api_go_internal_application_dtos.EffectivePermissionNode:
+    properties:
+      menuCode:
+        type: string
+      menuName:
+        type: string
+      subMenus:
+        items:
+          $ref: '#/definitions/photogallery_api_go_internal_application_dtos.EffectiveSubMenu'
+        type: array
+    type: object
+  photogallery_api_go_internal_application_dtos.EffectiveSubMenu:
+    properties:
+      permissions:
+        items:
+          type: string
+        type: array
+      subMenuCode:
+        type: string
+      subMenuName:
+        type: string
+    type: object
+  photogallery_api_go_internal_application_dtos_request_sales.CreateSaleItemRequestDTO:
+    properties:
+      discount:
+        type: number
+      discountReason:
+        type: string
+      notes:
+        type: string
+      productId:
+        type: string
+      quantity:
+        minimum: 1
+        type: integer
+      unitPrice:
+        type: number
+    required:
+    - productId
+    - quantity
+    type: object
+  photogallery_api_go_internal_application_dtos_request_security.OverrideItemDTO:
+    properties:
+      mode:
+        enum:
+        - Grant
+        - Revoke
+        type: string
+      permissionId:
+        type: string
+      subMenuId:
+        type: string
+    required:
+    - mode
+    - permissionId
+    - subMenuId
+    type: object
+  photogallery_api_go_internal_application_dtos_request_security.RolePermissionSetItemDTO:
+    properties:
+      menuId:
+        type: string
+      permissionIds:
+        items:
+          type: string
+        type: array
+      subMenuId:
+        type: string
+    required:
+    - menuId
+    - permissionIds
+    - subMenuId
+    type: object
+  photogallery_api_go_internal_application_dtos_responses_auth.MeResponseDTO:
+    properties:
+      createdAtUtc:
+        type: string
+      email:
+        type: string
+      fullName:
+        type: string
+      id:
+        type: string
+      isActive:
+        type: boolean
+      permissions:
+        items:
+          $ref: '#/definitions/photogallery_api_go_internal_application_dtos.EffectivePermissionNode'
+        type: array
+      phone:
+        type: string
+      roles:
+        items:
+          $ref: '#/definitions/photogallery_api_go_internal_application_dtos_responses_auth.MeRoleDTO'
+        type: array
+      updatedAtUtc:
+        type: string
+      username:
+        type: string
+    type: object
+  photogallery_api_go_internal_application_dtos_responses_auth.MeRoleDTO:
+    properties:
+      description:
+        type: string
+      id:
+        type: string
+      isActive:
+        type: boolean
+      isPrimary:
+        type: boolean
+      name:
+        type: string
+    type: object
+  photogallery_api_go_internal_application_dtos_responses_security.RoleMenuDTO:
+    properties:
+      code:
+        type: string
+      id:
+        type: string
+      name:
+        type: string
+      subMenus:
+        items:
+          $ref: '#/definitions/photogallery_api_go_internal_application_dtos_responses_security.RoleSubMenuDTO'
+        type: array
+    type: object
+  photogallery_api_go_internal_application_dtos_responses_security.RolePermissionDTO:
+    properties:
+      code:
+        type: string
+      id:
+        type: string
+      name:
+        type: string
+    type: object
+  photogallery_api_go_internal_application_dtos_responses_security.RoleResponseDTO:
+    properties:
+      description:
+        type: string
+      id:
+        type: string
+      isActive:
+        type: boolean
+      menus:
+        items:
+          $ref: '#/definitions/photogallery_api_go_internal_application_dtos_responses_security.RoleMenuDTO'
+        type: array
+      name:
+        type: string
+    type: object
+  photogallery_api_go_internal_application_dtos_responses_security.RoleSubMenuDTO:
+    properties:
+      code:
+        type: string
+      id:
+        type: string
+      name:
+        type: string
+      permissions:
+        items:
+          $ref: '#/definitions/photogallery_api_go_internal_application_dtos_responses_security.RolePermissionDTO'
+        type: array
+    type: object
+  photogallery_api_go_internal_application_dtos_responses_security.UserResponseDTO:
+    properties:
+      createdAtUtc:
+        type: string
+      email:
+        type: string
+      fullName:
+        type: string
+      id:
+        type: string
+      isActive:
+        type: boolean
+      phone:
+        type: string
+      updatedAtUtc:
+        type: string
+      username:
+        type: string
+    type: object
+  photogallery_api_go_internal_domain_entities.AppSetting:
+    properties:
+      key:
+        type: string
+      updatedAtUtc:
+        type: string
+      updatedByUserID:
+        type: string
+      value:
+        type: string
+    type: object
+  photogallery_api_go_internal_domain_entities.Appointment:
+    properties:
+      createdAtUtc:
+        type: string
+      createdByUserID:
+        type: string
+      customerID:
+        type: string
+      endsAtUtc:
+        type: string
+      id:
+        type: string
+      notes:
+        type: string
+      productID:
+        type: string
+      saleID:
+        type: string
+      startsAtUtc:
+        type: string
+      status:
+        type: string
+      updatedAtUtc:
+        type: string
+    type: object
+  photogallery_api_go_internal_domain_entities.AuditLog:
+    properties:
+      action:
+        type: string
+      actorUserID:
+        type: string
+      createdAtUtc:
+        type: string
+      dataJSON:
+        type: string
+      entityID:
+        type: string
+      entityType:
+        type: string
+      id:
+        type: string
+      ipaddress:
+        type: string
+      updatedAtUtc:
+        type: string
+    type: object
+  photogallery_api_go_internal_domain_entities.CashCategory:
+    properties:
+      createdAtUtc:
+        type: string
+      id:
+        type: string
+      isActive:
+        type: boolean
+      name:
+        type: string
+      type:
+        type: string
+      updatedAtUtc:
+        type: string
+    type: object
+  photogallery_api_go_internal_domain_entities.CashMovement:
+    properties:
+      amount:
+        format: float64
+        type: number
+      categoryID:
+        type: string
+      createdAtUtc:
+        type: string
+      createdByUserID:
+        type: string
+      id:
+        type: string
+      method:
+        type: string
+      notes:
+        type: string
+      reference:
+        type: string
+      relatedEntityID:
+        type: string
+      relatedEntityType:
+        type: string
+      sessionID:
+        type: string
+      type:
+        type: string
+      updatedAtUtc:
+        type: string
+    type: object
+  photogallery_api_go_internal_domain_entities.Category:
+    properties:
+      createdAtUtc:
+        type: string
+      description:
+        type: string
+      id:
+        type: string
+      isActive:
+        type: boolean
+      name:
+        type: string
+      updatedAtUtc:
+        type: string
+    type: object
+  photogallery_api_go_internal_domain_entities.Customer:
+    properties:
+      createdAtUtc:
+        type: string
+      customerCode:
+        type: string
+      document:
+        type: string
+      email:
+        type: string
+      fullName:
+        type: string
+      id:
+        type: string
+      isActive:
+        type: boolean
+      notes:
+        type: string
+      phone:
+        type: string
+      updatedAtUtc:
+        type: string
+    type: object
+  photogallery_api_go_internal_domain_entities.File:
+    properties:
+      contentType:
+        type: string
+      createdAtUtc:
+        type: string
+      id:
+        type: string
+      originalName:
+        type: string
+      sizeBytes:
+        format: int64
+        type: integer
+      storageBaseKey:
+        type: string
+      storageKind:
+        type: string
+      storageRelativePath:
+        type: string
+      updatedAtUtc:
+        type: string
+      uploadedAtUtc:
+        type: string
+      uploadedByUserID:
+        type: string
+    type: object
+  photogallery_api_go_internal_domain_entities.Menu:
+    properties:
+      code:
+        type: string
+      createdAtUtc:
+        type: string
+      displayOrder:
+        type: integer
+      id:
+        type: string
+      isActive:
+        type: boolean
+      name:
+        type: string
+      updatedAtUtc:
+        type: string
+    type: object
+  photogallery_api_go_internal_domain_entities.Permission:
+    properties:
+      code:
+        type: string
+      createdAtUtc:
+        type: string
+      description:
+        type: string
+      id:
+        type: string
+      name:
+        type: string
+      updatedAtUtc:
+        type: string
+    type: object
+  photogallery_api_go_internal_domain_entities.Product:
+    properties:
+      basePrice:
+        format: float64
+        type: number
+      categoryID:
+        type: string
+      commissionType:
+        type: string
+      commissionValue:
+        format: float64
+        type: number
+      cost:
+        format: float64
+        type: number
+      createdAtUtc:
+        type: string
+      defaultLeadDays:
+        type: integer
+      id:
+        type: string
+      isActive:
+        type: boolean
+      name:
+        type: string
+      notes:
+        type: string
+      requiresDelivery:
+        type: boolean
+      type:
+        type: string
+      updatedAtUtc:
+        type: string
+    type: object
+  photogallery_api_go_internal_domain_entities.Role:
+    properties:
+      createdAtUtc:
+        type: string
+      description:
+        type: string
+      id:
+        type: string
+      isActive:
+        type: boolean
+      name:
+        type: string
+      updatedAtUtc:
+        type: string
+    type: object
+  photogallery_api_go_internal_domain_entities.RoleSubMenuPermission:
+    properties:
+      permissionID:
+        type: string
+      roleID:
+        type: string
+      subMenuID:
+        type: string
+    type: object
+  photogallery_api_go_internal_domain_entities.Sale:
+    properties:
+      confirmedAtUtc:
+        type: string
+      createdAtUtc:
+        type: string
+      customerID:
+        type: string
+      discountTotal:
+        format: float64
+        type: number
+      id:
+        type: string
+      notifyOptIn:
+        type: boolean
+      sellerUserID:
+        type: string
+      status:
+        type: string
+      subtotal:
+        format: float64
+        type: number
+      total:
+        format: float64
+        type: number
+      totalCommissionSnapshot:
+        format: float64
+        type: number
+      totalCostSnapshot:
+        format: float64
+        type: number
+      updatedAtUtc:
+        type: string
+    type: object
+  photogallery_api_go_internal_domain_entities.SaleItem:
+    properties:
+      commissionTypeSnapshot:
+        type: string
+      commissionValueSnapshot:
+        format: float64
+        type: number
+      createdAtUtc:
+        type: string
+      discountReason:
+        type: string
+      discountSnapshot:
+        format: float64
+        type: number
+      id:
+        type: string
+      leadDaysSnapshot:
+        type: integer
+      notes:
+        type: string
+      productID:
+        type: string
+      quantity:
+        type: integer
+      requiresDeliverySnapshot:
+        type: boolean
+      saleID:
+        type: string
+      unitCostSnapshot:
+        format: float64
+        type: number
+      unitPriceSnapshot:
+        format: float64
+        type: number
+      updatedAtUtc:
+        type: string
+    type: object
+  photogallery_api_go_internal_domain_entities.SalePayment:
+    properties:
+      amount:
+        format: float64
+        type: number
+      createdAtUtc:
+        type: string
+      createdByUserID:
+        type: string
+      id:
+        type: string
+      method:
+        type: string
+      paidAtUtc:
+        type: string
+      reference:
+        type: string
+      saleID:
+        type: string
+      updatedAtUtc:
+        type: string
+    type: object
+  photogallery_api_go_internal_domain_entities.SubMenu:
+    properties:
+      code:
+        type: string
+      createdAtUtc:
+        type: string
+      displayOrder:
+        type: integer
+      id:
+        type: string
+      isActive:
+        type: boolean
+      menuID:
+        type: string
+      name:
+        type: string
+      route:
+        type: string
+      updatedAtUtc:
+        type: string
+    type: object
+  photogallery_api_go_internal_domain_entities.UserPermissionOverride:
+    properties:
+      createdAtUtc:
+        type: string
+      id:
+        type: string
+      mode:
+        type: string
+      permissionID:
+        type: string
+      subMenuID:
+        type: string
+      updatedAtUtc:
+        type: string
+      userID:
+        type: string
+    type: object
+  photogallery_api_go_internal_domain_entities.UserRole:
+    properties:
+      isPrimary:
+        type: boolean
+      roleID:
+        type: string
+      userID:
+        type: string
+    type: object
+  photogallery_api_go_internal_domain_entities.WorkOrder:
+    properties:
+      createdAtUtc:
+        type: string
+      deliveredAtUtc:
+        type: string
+      dueDateUtc:
+        type: string
+      id:
+        type: string
+      notes:
+        type: string
+      responsibleUserID:
+        type: string
+      saleID:
+        type: string
+      status:
+        type: string
+      updatedAtUtc:
+        type: string
+    type: object
+  photogallery_api_go_internal_domain_entities.Worker:
+    properties:
+      createdAtUtc:
+        type: string
+      email:
+        type: string
+      fixedSalary:
+        format: float64
+        type: number
+      fullName:
+        type: string
+      id:
+        type: string
+      isActive:
+        type: boolean
+      notes:
+        type: string
+      phone:
+        type: string
+      salaryPeriod:
+        type: string
+      updatedAtUtc:
+        type: string
+    type: object
+info:
+  contact: {}
+  description: API REST v1 Foto-tienda
+  title: Photo Gallery API
+  version: "1.0"
+paths:
+  /api/v1/appointments:
+    get:
+      description: Lista paginada de citas con búsqueda y orden opcional.
+      parameters:
+      - default: 1
+        description: Page
+        in: query
+        name: page
+        type: integer
+      - default: 25
+        description: Page size
+        in: query
+        name: pageSize
+        type: integer
+      - description: Search text
+        in: query
+        name: q
+        type: string
+      - description: Sort field
+        in: query
+        name: sort
+        type: string
+      - description: Sort direction
+        enum:
+        - asc
+        - desc
+        in: query
+        name: dir
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/internal_web_controllers_http.SwaggerAppointmentListResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/internal_web_controllers_http.SwaggerErrorResponse'
+      security:
+      - BearerAuth: []
+      summary: ListAppointments
+      tags:
+      - appointments
+    post:
+      consumes:
+      - application/json
+      description: Crea una nueva cita.
+      parameters:
+      - description: Create appointment payload
+        in: body
+        name: body
+        required: true
+        schema:
+          $ref: '#/definitions/internal_web_controllers_http.SwaggerCreateAppointmentRequest'
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Created
+          schema:
+            $ref: '#/definitions/internal_web_controllers_http.SwaggerAppointmentResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/internal_web_controllers_http.SwaggerErrorResponse'
+      security:
+      - BearerAuth: []
+      summary: CreateAppointment
+      tags:
+      - appointments
+  /api/v1/appointments/:id:
+    get:
+      description: Obtiene una cita por identificador.
+      parameters:
+      - description: Resource ID (UUID)
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/internal_web_controllers_http.SwaggerAppointmentResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/internal_web_controllers_http.SwaggerErrorResponse'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/internal_web_controllers_http.SwaggerErrorResponse'
+      security:
+      - BearerAuth: []
+      summary: GetAppointment
+      tags:
+      - appointments
+    put:
+      consumes:
+      - application/json
+      description: Actualiza una cita existente.
+      parameters:
+      - description: Update appointment payload
+        in: body
+        name: body
+        required: true
+        schema:
+          $ref: '#/definitions/internal_web_controllers_http.SwaggerUpdateAppointmentRequest'
+      - description: Resource ID (UUID)
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/internal_web_controllers_http.SwaggerAppointmentResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/internal_web_controllers_http.SwaggerErrorResponse'
+      security:
+      - BearerAuth: []
+      summary: UpdateAppointment
+      tags:
+      - appointments
+  /api/v1/audit-logs:
+    get:
+      description: Lista paginada de auditorías con búsqueda y orden opcional.
+      parameters:
+      - default: 1
+        description: Page
+        in: query
+        name: page
+        type: integer
+      - default: 25
+        description: Page size
+        in: query
+        name: pageSize
+        type: integer
+      - description: Search text
+        in: query
+        name: q
+        type: string
+      - description: Sort field
+        in: query
+        name: sort
+        type: string
+      - description: Sort direction
+        enum:
+        - asc
+        - desc
+        in: query
+        name: dir
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/internal_web_controllers_http.SwaggerAuditListResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/internal_web_controllers_http.SwaggerErrorResponse'
+      security:
+      - BearerAuth: []
+      summary: ListAudit
+      tags:
+      - audit
+  /api/v1/audit-logs/:id:
+    get:
+      description: Obtiene un registro de auditoría por identificador.
+      parameters:
+      - description: Resource ID (UUID)
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/internal_web_controllers_http.SwaggerAuditResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/internal_web_controllers_http.SwaggerErrorResponse'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/internal_web_controllers_http.SwaggerErrorResponse'
+      security:
+      - BearerAuth: []
+      summary: GetAudit
+      tags:
+      - audit
+  /api/v1/auth/change-password:
+    post:
+      consumes:
+      - application/json
+      description: Cambia la contraseña del usuario autenticado.
+      parameters:
+      - description: Change password payload
+        in: body
+        name: body
+        required: true
+        schema:
+          $ref: '#/definitions/internal_web_controllers_http.SwaggerChangePasswordRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/internal_web_controllers_http.SwaggerOKFlagResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/internal_web_controllers_http.SwaggerErrorResponse'
+      security:
+      - BearerAuth: []
+      summary: ChangePassword
+      tags:
+      - auth
+  /api/v1/auth/login:
+    post:
+      consumes:
+      - application/json
+      description: Autentica credenciales y devuelve tokens de acceso y refresh.
+      parameters:
+      - description: Login payload
+        in: body
+        name: body
+        required: true
+        schema:
+          $ref: '#/definitions/internal_web_controllers_http.SwaggerLoginRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/internal_web_controllers_http.SwaggerAuthLoginResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/internal_web_controllers_http.SwaggerErrorResponse'
+        "401":
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/internal_web_controllers_http.SwaggerErrorResponse'
+      summary: Login
+      tags:
+      - auth
+  /api/v1/auth/logout:
+    post:
+      description: Cierra la sesión actual en cliente (invalidación de token opcional).
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/internal_web_controllers_http.SwaggerOKFlagResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/internal_web_controllers_http.SwaggerErrorResponse'
+      security:
+      - BearerAuth: []
+      summary: Logout
+      tags:
+      - auth
+  /api/v1/auth/me:
+    get:
+      description: Retorna el perfil del usuario autenticado.
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/internal_web_controllers_http.SwaggerAuthMeResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/internal_web_controllers_http.SwaggerErrorResponse'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/internal_web_controllers_http.SwaggerErrorResponse'
+      security:
+      - BearerAuth: []
+      summary: Me
+      tags:
+      - auth
+  /api/v1/auth/my-permissions:
+    get:
+      description: Retorna los permisos efectivos calculados por rol y overrides.
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/internal_web_controllers_http.SwaggerPermissionTreeResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/internal_web_controllers_http.SwaggerErrorResponse'
+      security:
+      - BearerAuth: []
+      summary: MyPermissions
+      tags:
+      - auth
+  /api/v1/auth/refresh:
+    post:
+      consumes:
+      - application/json
+      description: Genera nuevos tokens a partir de un refresh token válido.
+      parameters:
+      - description: Refresh payload
+        in: body
+        name: body
+        required: true
+        schema:
+          $ref: '#/definitions/internal_web_controllers_http.SwaggerRefreshRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/internal_web_controllers_http.SwaggerAuthLoginResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/internal_web_controllers_http.SwaggerErrorResponse'
+        "401":
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/internal_web_controllers_http.SwaggerErrorResponse'
+      summary: Refresh
+      tags:
+      - auth
+  /api/v1/cash/categories:
+    get:
+      description: Lista paginada de categorías de caja con búsqueda y orden opcional.
+      parameters:
+      - default: 1
+        description: Page
+        in: query
+        name: page
+        type: integer
+      - default: 25
+        description: Page size
+        in: query
+        name: pageSize
+        type: integer
+      - description: Search text
+        in: query
+        name: q
+        type: string
+      - description: Sort field
+        in: query
+        name: sort
+        type: string
+      - description: Sort direction
+        enum:
+        - asc
+        - desc
+        in: query
+        name: dir
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/internal_web_controllers_http.SwaggerCashCategoryListResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/internal_web_controllers_http.SwaggerErrorResponse'
+      security:
+      - BearerAuth: []
+      summary: ListCashCategories
+      tags:
+      - cash
+    post:
+      consumes:
+      - application/json
+      description: Crea una nueva categoría de caja.
+      parameters:
+      - description: Create cash category payload
+        in: body
+        name: body
+        required: true
+        schema:
+          $ref: '#/definitions/internal_web_controllers_http.SwaggerCreateCashCategoryRequest'
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Created
+          schema:
+            $ref: '#/definitions/internal_web_controllers_http.SwaggerCashCategoryResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/internal_web_controllers_http.SwaggerErrorResponse'
+      security:
+      - BearerAuth: []
+      summary: CreateCashCategory
+      tags:
+      - cash
+  /api/v1/cash/categories/:id:
+    get:
+      description: Obtiene una categoría de caja por identificador.
+      parameters:
+      - description: Resource ID (UUID)
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/internal_web_controllers_http.SwaggerCashCategoryResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/internal_web_controllers_http.SwaggerErrorResponse'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/internal_web_controllers_http.SwaggerErrorResponse'
+      security:
+      - BearerAuth: []
+      summary: GetCashCategory
+      tags:
+      - cash
+    put:
+      consumes:
+      - application/json
+      description: Actualiza una categoría de caja existente.
+      parameters:
+      - description: Update cash category payload
+        in: body
+        name: body
+        required: true
+        schema:
+          $ref: '#/definitions/internal_web_controllers_http.SwaggerUpdateCashCategoryRequest'
+      - description: Resource ID (UUID)
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/internal_web_controllers_http.SwaggerCashCategoryResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/internal_web_controllers_http.SwaggerErrorResponse'
+      security:
+      - BearerAuth: []
+      summary: UpdateCashCategory
+      tags:
+      - cash
+  /api/v1/cash/movements:
+    get:
+      description: Lista paginada de movimientos de caja con búsqueda y orden opcional.
+      parameters:
+      - default: 1
+        description: Page
+        in: query
+        name: page
+        type: integer
+      - default: 25
+        description: Page size
+        in: query
+        name: pageSize
+        type: integer
+      - description: Search text
+        in: query
+        name: q
+        type: string
+      - description: Sort field
+        in: query
+        name: sort
+        type: string
+      - description: Sort direction
+        enum:
+        - asc
+        - desc
+        in: query
+        name: dir
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/internal_web_controllers_http.SwaggerCashMovementListResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/internal_web_controllers_http.SwaggerErrorResponse'
+      security:
+      - BearerAuth: []
+      summary: ListCashMovements
+      tags:
+      - cash
+    post:
+      consumes:
+      - application/json
+      description: Crea un nuevo movimiento de caja.
+      parameters:
+      - description: Create cash movement payload
+        in: body
+        name: body
+        required: true
+        schema:
+          $ref: '#/definitions/internal_web_controllers_http.SwaggerCreateCashMovementRequest'
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Created
+          schema:
+            $ref: '#/definitions/internal_web_controllers_http.SwaggerCashMovementResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/internal_web_controllers_http.SwaggerErrorResponse'
+      security:
+      - BearerAuth: []
+      summary: CreateCashMovement
+      tags:
+      - cash
+  /api/v1/cash/movements/:id:
+    get:
+      description: Obtiene un movimiento de caja por identificador.
+      parameters:
+      - description: Resource ID (UUID)
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/internal_web_controllers_http.SwaggerCashMovementResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/internal_web_controllers_http.SwaggerErrorResponse'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/internal_web_controllers_http.SwaggerErrorResponse'
+      security:
+      - BearerAuth: []
+      summary: GetCashMovement
+      tags:
+      - cash
+    put:
+      consumes:
+      - application/json
+      description: Actualiza un movimiento de caja existente.
+      parameters:
+      - description: Update cash movement payload
+        in: body
+        name: body
+        required: true
+        schema:
+          $ref: '#/definitions/internal_web_controllers_http.SwaggerUpdateCashMovementRequest'
+      - description: Resource ID (UUID)
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/internal_web_controllers_http.SwaggerCashMovementResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/internal_web_controllers_http.SwaggerErrorResponse'
+      security:
+      - BearerAuth: []
+      summary: UpdateCashMovement
+      tags:
+      - cash
+  /api/v1/categories:
+    get:
+      description: Lista paginada de categorías con búsqueda y orden opcional.
+      parameters:
+      - default: 1
+        description: Page
+        in: query
+        name: page
+        type: integer
+      - default: 25
+        description: Page size
+        in: query
+        name: pageSize
+        type: integer
+      - description: Search text
+        in: query
+        name: q
+        type: string
+      - description: Sort field
+        in: query
+        name: sort
+        type: string
+      - description: Sort direction
+        enum:
+        - asc
+        - desc
+        in: query
+        name: dir
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/internal_web_controllers_http.SwaggerCategoryListResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/internal_web_controllers_http.SwaggerErrorResponse'
+      security:
+      - BearerAuth: []
+      summary: ListCategories
+      tags:
+      - catalog
+    post:
+      consumes:
+      - application/json
+      description: Crea una nueva categoría.
+      parameters:
+      - description: Create category payload
+        in: body
+        name: body
+        required: true
+        schema:
+          $ref: '#/definitions/internal_web_controllers_http.SwaggerCreateCategoryRequest'
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Created
+          schema:
+            $ref: '#/definitions/internal_web_controllers_http.SwaggerCategoryResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/internal_web_controllers_http.SwaggerErrorResponse'
+      security:
+      - BearerAuth: []
+      summary: CreateCategory
+      tags:
+      - catalog
+  /api/v1/categories/:id:
+    get:
+      description: Obtiene una categoría por identificador.
+      parameters:
+      - description: Resource ID (UUID)
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/internal_web_controllers_http.SwaggerCategoryResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/internal_web_controllers_http.SwaggerErrorResponse'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/internal_web_controllers_http.SwaggerErrorResponse'
+      security:
+      - BearerAuth: []
+      summary: GetCategory
+      tags:
+      - catalog
+    put:
+      consumes:
+      - application/json
+      description: Actualiza una categoría existente.
+      parameters:
+      - description: Update category payload
+        in: body
+        name: body
+        required: true
+        schema:
+          $ref: '#/definitions/internal_web_controllers_http.SwaggerUpdateCategoryRequest'
+      - description: Resource ID (UUID)
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/internal_web_controllers_http.SwaggerCategoryResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/internal_web_controllers_http.SwaggerErrorResponse'
+      security:
+      - BearerAuth: []
+      summary: UpdateCategory
+      tags:
+      - catalog
+  /api/v1/categories/:id/activate:
+    patch:
+      description: Activa una categoría.
+      parameters:
+      - description: Resource ID (UUID)
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/internal_web_controllers_http.SwaggerOKFlagResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/internal_web_controllers_http.SwaggerErrorResponse'
+      security:
+      - BearerAuth: []
+      summary: ActivateCategory
+      tags:
+      - catalog
+  /api/v1/categories/:id/deactivate:
+    patch:
+      description: Desactiva una categoría.
+      parameters:
+      - description: Resource ID (UUID)
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/internal_web_controllers_http.SwaggerOKFlagResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/internal_web_controllers_http.SwaggerErrorResponse'
+      security:
+      - BearerAuth: []
+      summary: DeactivateCategory
+      tags:
+      - catalog
+  /api/v1/customers:
+    get:
+      description: Lista paginada de clientes con búsqueda y orden opcional.
+      parameters:
+      - default: 1
+        description: Page
+        in: query
+        name: page
+        type: integer
+      - default: 25
+        description: Page size
+        in: query
+        name: pageSize
+        type: integer
+      - description: Search text
+        in: query
+        name: q
+        type: string
+      - description: Sort field
+        in: query
+        name: sort
+        type: string
+      - description: Sort direction
+        enum:
+        - asc
+        - desc
+        in: query
+        name: dir
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/internal_web_controllers_http.SwaggerCustomerListResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/internal_web_controllers_http.SwaggerErrorResponse'
+      security:
+      - BearerAuth: []
+      summary: ListCustomers
+      tags:
+      - customers
+    post:
+      consumes:
+      - application/json
+      description: Crea un nuevo cliente.
+      parameters:
+      - description: Create customer payload
+        in: body
+        name: body
+        required: true
+        schema:
+          $ref: '#/definitions/internal_web_controllers_http.SwaggerCreateCustomerRequest'
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Created
+          schema:
+            $ref: '#/definitions/internal_web_controllers_http.SwaggerCustomerResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/internal_web_controllers_http.SwaggerErrorResponse'
+      security:
+      - BearerAuth: []
+      summary: CreateCustomer
+      tags:
+      - customers
+  /api/v1/customers/:id:
+    get:
+      description: Obtiene un cliente por identificador.
+      parameters:
+      - description: Resource ID (UUID)
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/internal_web_controllers_http.SwaggerCustomerResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/internal_web_controllers_http.SwaggerErrorResponse'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/internal_web_controllers_http.SwaggerErrorResponse'
+      security:
+      - BearerAuth: []
+      summary: GetCustomer
+      tags:
+      - customers
+    put:
+      consumes:
+      - application/json
+      description: Actualiza un cliente existente.
+      parameters:
+      - description: Update customer payload
+        in: body
+        name: body
+        required: true
+        schema:
+          $ref: '#/definitions/internal_web_controllers_http.SwaggerUpdateCustomerRequest'
+      - description: Resource ID (UUID)
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/internal_web_controllers_http.SwaggerCustomerResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/internal_web_controllers_http.SwaggerErrorResponse'
+      security:
+      - BearerAuth: []
+      summary: UpdateCustomer
+      tags:
+      - customers
+  /api/v1/customers/:id/activate:
+    patch:
+      description: Activa un cliente.
+      parameters:
+      - description: Resource ID (UUID)
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/internal_web_controllers_http.SwaggerOKFlagResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/internal_web_controllers_http.SwaggerErrorResponse'
+      security:
+      - BearerAuth: []
+      summary: ActivateCustomer
+      tags:
+      - customers
+  /api/v1/customers/:id/deactivate:
+    patch:
+      description: Desactiva un cliente.
+      parameters:
+      - description: Resource ID (UUID)
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/internal_web_controllers_http.SwaggerOKFlagResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/internal_web_controllers_http.SwaggerErrorResponse'
+      security:
+      - BearerAuth: []
+      summary: DeactivateCustomer
+      tags:
+      - customers
+  /api/v1/files:
+    get:
+      description: Lista paginada de archivos con búsqueda y orden opcional.
+      parameters:
+      - default: 1
+        description: Page
+        in: query
+        name: page
+        type: integer
+      - default: 25
+        description: Page size
+        in: query
+        name: pageSize
+        type: integer
+      - description: Search text
+        in: query
+        name: q
+        type: string
+      - description: Sort field
+        in: query
+        name: sort
+        type: string
+      - description: Sort direction
+        enum:
+        - asc
+        - desc
+        in: query
+        name: dir
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/internal_web_controllers_http.SwaggerFileListResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/internal_web_controllers_http.SwaggerErrorResponse'
+      security:
+      - BearerAuth: []
+      summary: ListFiles
+      tags:
+      - files
+  /api/v1/files/:id:
+    delete:
+      description: Elimina un archivo por identificador.
+      parameters:
+      - description: Resource ID (UUID)
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/internal_web_controllers_http.SwaggerOKFlagResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/internal_web_controllers_http.SwaggerErrorResponse'
+      security:
+      - BearerAuth: []
+      summary: DeleteFile
+      tags:
+      - files
+  /api/v1/files/:id/download:
+    get:
+      description: Descarga un archivo previamente cargado por identificador.
+      parameters:
+      - description: Resource ID (UUID)
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/octet-stream
+      responses:
+        "200":
+          description: OK
+          schema:
+            type: file
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/internal_web_controllers_http.SwaggerErrorResponse'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/internal_web_controllers_http.SwaggerErrorResponse'
+      security:
+      - BearerAuth: []
+      summary: DownloadFile
+      tags:
+      - files
+  /api/v1/files/upload:
+    post:
+      consumes:
+      - multipart/form-data
+      description: Sube un archivo y lo vincula a una entidad (Sale, WorkOrder, Appointment,
+        etc.).
+      parameters:
+      - description: File
+        in: formData
+        name: file
+        required: true
+        type: file
+      - description: Entity type
+        in: formData
+        name: entityType
+        required: true
+        type: string
+      - description: Entity ID (UUID)
+        in: formData
+        name: entityId
+        required: true
+        type: string
+      - description: Customer ID (UUID)
+        in: formData
+        name: customerId
+        type: string
+      - description: Notes
+        in: formData
+        name: notes
+        type: string
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Created
+          schema:
+            $ref: '#/definitions/internal_web_controllers_http.SwaggerFileResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/internal_web_controllers_http.SwaggerErrorResponse'
+      security:
+      - BearerAuth: []
+      summary: UploadFile
+      tags:
+      - files
+  /api/v1/health:
+    get:
+      description: Verifica el estado de la API y el tiempo del servidor.
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/internal_web_controllers_http.SwaggerHealthResponse'
+      summary: Health
+      tags:
+      - system
+  /api/v1/menus:
+    get:
+      description: Lista paginada de menús con búsqueda y orden opcional.
+      parameters:
+      - default: 1
+        description: Page
+        in: query
+        name: page
+        type: integer
+      - default: 25
+        description: Page size
+        in: query
+        name: pageSize
+        type: integer
+      - description: Search text
+        in: query
+        name: q
+        type: string
+      - description: Sort field
+        in: query
+        name: sort
+        type: string
+      - description: Sort direction
+        enum:
+        - asc
+        - desc
+        in: query
+        name: dir
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/internal_web_controllers_http.SwaggerMenuListResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/internal_web_controllers_http.SwaggerErrorResponse'
+      security:
+      - BearerAuth: []
+      summary: ListMenus
+      tags:
+      - security
+    post:
+      consumes:
+      - application/json
+      description: Crea un nuevo menú.
+      parameters:
+      - description: Menu payload
+        in: body
+        name: body
+        required: true
+        schema:
+          $ref: '#/definitions/internal_web_controllers_http.SwaggerMenuRequest'
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Created
+          schema:
+            $ref: '#/definitions/internal_web_controllers_http.SwaggerMenuResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/internal_web_controllers_http.SwaggerErrorResponse'
+      security:
+      - BearerAuth: []
+      summary: CreateMenu
+      tags:
+      - security
+  /api/v1/menus/:id:
+    get:
+      description: Obtiene un menú por identificador.
+      parameters:
+      - description: Resource ID (UUID)
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/internal_web_controllers_http.SwaggerMenuResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/internal_web_controllers_http.SwaggerErrorResponse'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/internal_web_controllers_http.SwaggerErrorResponse'
+      security:
+      - BearerAuth: []
+      summary: GetMenu
+      tags:
+      - security
+    put:
+      consumes:
+      - application/json
+      description: Actualiza un menú existente.
+      parameters:
+      - description: Menu payload
+        in: body
+        name: body
+        required: true
+        schema:
+          $ref: '#/definitions/internal_web_controllers_http.SwaggerMenuRequest'
+      - description: Resource ID (UUID)
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/internal_web_controllers_http.SwaggerMenuResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/internal_web_controllers_http.SwaggerErrorResponse'
+      security:
+      - BearerAuth: []
+      summary: UpdateMenu
+      tags:
+      - security
+  /api/v1/menus/:id/activate:
+    patch:
+      description: Activa un menú.
+      parameters:
+      - description: Resource ID (UUID)
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/internal_web_controllers_http.SwaggerOKFlagResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/internal_web_controllers_http.SwaggerErrorResponse'
+      security:
+      - BearerAuth: []
+      summary: ActivateMenu
+      tags:
+      - security
+  /api/v1/menus/:id/deactivate:
+    patch:
+      description: Desactiva un menú.
+      parameters:
+      - description: Resource ID (UUID)
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/internal_web_controllers_http.SwaggerOKFlagResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/internal_web_controllers_http.SwaggerErrorResponse'
+      security:
+      - BearerAuth: []
+      summary: DeactivateMenu
+      tags:
+      - security
+  /api/v1/permissions:
+    get:
+      description: Lista paginada de permisos con búsqueda y orden opcional.
+      parameters:
+      - default: 1
+        description: Page
+        in: query
+        name: page
+        type: integer
+      - default: 25
+        description: Page size
+        in: query
+        name: pageSize
+        type: integer
+      - description: Search text
+        in: query
+        name: q
+        type: string
+      - description: Sort field
+        in: query
+        name: sort
+        type: string
+      - description: Sort direction
+        enum:
+        - asc
+        - desc
+        in: query
+        name: dir
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/internal_web_controllers_http.SwaggerPermissionListResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/internal_web_controllers_http.SwaggerErrorResponse'
+      security:
+      - BearerAuth: []
+      summary: ListPermissions
+      tags:
+      - security
+    post:
+      consumes:
+      - application/json
+      description: Crea un nuevo permiso.
+      parameters:
+      - description: Permission payload
+        in: body
+        name: body
+        required: true
+        schema:
+          $ref: '#/definitions/internal_web_controllers_http.SwaggerPermissionRequest'
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Created
+          schema:
+            $ref: '#/definitions/internal_web_controllers_http.SwaggerPermissionResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/internal_web_controllers_http.SwaggerErrorResponse'
+      security:
+      - BearerAuth: []
+      summary: CreatePermission
+      tags:
+      - security
+  /api/v1/permissions/:id:
+    get:
+      description: Obtiene un permiso por identificador.
+      parameters:
+      - description: Resource ID (UUID)
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/internal_web_controllers_http.SwaggerPermissionResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/internal_web_controllers_http.SwaggerErrorResponse'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/internal_web_controllers_http.SwaggerErrorResponse'
+      security:
+      - BearerAuth: []
+      summary: GetPermission
+      tags:
+      - security
+    put:
+      consumes:
+      - application/json
+      description: Actualiza un permiso existente.
+      parameters:
+      - description: Permission payload
+        in: body
+        name: body
+        required: true
+        schema:
+          $ref: '#/definitions/internal_web_controllers_http.SwaggerPermissionRequest'
+      - description: Resource ID (UUID)
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/internal_web_controllers_http.SwaggerPermissionResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/internal_web_controllers_http.SwaggerErrorResponse'
+      security:
+      - BearerAuth: []
+      summary: UpdatePermission
+      tags:
+      - security
+  /api/v1/products:
+    get:
+      description: Lista paginada de productos con búsqueda y orden opcional.
+      parameters:
+      - default: 1
+        description: Page
+        in: query
+        name: page
+        type: integer
+      - default: 25
+        description: Page size
+        in: query
+        name: pageSize
+        type: integer
+      - description: Search text
+        in: query
+        name: q
+        type: string
+      - description: Sort field
+        in: query
+        name: sort
+        type: string
+      - description: Sort direction
+        enum:
+        - asc
+        - desc
+        in: query
+        name: dir
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/internal_web_controllers_http.SwaggerProductListResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/internal_web_controllers_http.SwaggerErrorResponse'
+      security:
+      - BearerAuth: []
+      summary: ListProducts
+      tags:
+      - catalog
+    post:
+      consumes:
+      - application/json
+      description: Crea un nuevo producto.
+      parameters:
+      - description: Create product payload
+        in: body
+        name: body
+        required: true
+        schema:
+          $ref: '#/definitions/internal_web_controllers_http.SwaggerCreateProductRequest'
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Created
+          schema:
+            $ref: '#/definitions/internal_web_controllers_http.SwaggerProductResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/internal_web_controllers_http.SwaggerErrorResponse'
+      security:
+      - BearerAuth: []
+      summary: CreateProduct
+      tags:
+      - catalog
+  /api/v1/products/:id:
+    get:
+      description: Obtiene un producto por identificador.
+      parameters:
+      - description: Resource ID (UUID)
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/internal_web_controllers_http.SwaggerProductResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/internal_web_controllers_http.SwaggerErrorResponse'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/internal_web_controllers_http.SwaggerErrorResponse'
+      security:
+      - BearerAuth: []
+      summary: GetProduct
+      tags:
+      - catalog
+    put:
+      consumes:
+      - application/json
+      description: Actualiza un producto existente.
+      parameters:
+      - description: Update product payload
+        in: body
+        name: body
+        required: true
+        schema:
+          $ref: '#/definitions/internal_web_controllers_http.SwaggerUpdateProductRequest'
+      - description: Resource ID (UUID)
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/internal_web_controllers_http.SwaggerProductResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/internal_web_controllers_http.SwaggerErrorResponse'
+      security:
+      - BearerAuth: []
+      summary: UpdateProduct
+      tags:
+      - catalog
+  /api/v1/products/:id/activate:
+    patch:
+      description: Activa un producto.
+      parameters:
+      - description: Resource ID (UUID)
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/internal_web_controllers_http.SwaggerOKFlagResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/internal_web_controllers_http.SwaggerErrorResponse'
+      security:
+      - BearerAuth: []
+      summary: ActivateProduct
+      tags:
+      - catalog
+  /api/v1/products/:id/deactivate:
+    patch:
+      description: Desactiva un producto.
+      parameters:
+      - description: Resource ID (UUID)
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/internal_web_controllers_http.SwaggerOKFlagResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/internal_web_controllers_http.SwaggerErrorResponse'
+      security:
+      - BearerAuth: []
+      summary: DeactivateProduct
+      tags:
+      - catalog
+  /api/v1/roles:
+    get:
+      description: Lista paginada de roles con búsqueda y orden opcional.
+      parameters:
+      - default: 1
+        description: Page
+        in: query
+        name: page
+        type: integer
+      - default: 25
+        description: Page size
+        in: query
+        name: pageSize
+        type: integer
+      - description: Search text
+        in: query
+        name: q
+        type: string
+      - description: Sort field
+        in: query
+        name: sort
+        type: string
+      - description: Sort direction
+        enum:
+        - asc
+        - desc
+        in: query
+        name: dir
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/internal_web_controllers_http.SwaggerRoleListResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/internal_web_controllers_http.SwaggerErrorResponse'
+      security:
+      - BearerAuth: []
+      summary: ListRoles
+      tags:
+      - security
+    post:
+      consumes:
+      - application/json
+      description: Crea un nuevo rol.
+      parameters:
+      - description: Role payload
+        in: body
+        name: body
+        required: true
+        schema:
+          $ref: '#/definitions/internal_web_controllers_http.SwaggerRoleRequest'
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Created
+          schema:
+            $ref: '#/definitions/internal_web_controllers_http.SwaggerRoleResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/internal_web_controllers_http.SwaggerErrorResponse'
+      security:
+      - BearerAuth: []
+      summary: CreateRole
+      tags:
+      - security
+  /api/v1/roles/:id:
+    get:
+      description: Obtiene un rol por identificador.
+      parameters:
+      - description: Resource ID (UUID)
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/internal_web_controllers_http.SwaggerRoleDetailResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/internal_web_controllers_http.SwaggerErrorResponse'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/internal_web_controllers_http.SwaggerErrorResponse'
+      security:
+      - BearerAuth: []
+      summary: GetRole
+      tags:
+      - security
+    put:
+      consumes:
+      - application/json
+      description: Actualiza un rol existente.
+      parameters:
+      - description: Role payload
+        in: body
+        name: body
+        required: true
+        schema:
+          $ref: '#/definitions/internal_web_controllers_http.SwaggerRoleRequest'
+      - description: Resource ID (UUID)
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/internal_web_controllers_http.SwaggerRoleResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/internal_web_controllers_http.SwaggerErrorResponse'
+      security:
+      - BearerAuth: []
+      summary: UpdateRole
+      tags:
+      - security
+  /api/v1/roles/:id/activate:
+    patch:
+      description: Activa un rol.
+      parameters:
+      - description: Resource ID (UUID)
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/internal_web_controllers_http.SwaggerOKFlagResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/internal_web_controllers_http.SwaggerErrorResponse'
+      security:
+      - BearerAuth: []
+      summary: ActivateRole
+      tags:
+      - security
+  /api/v1/roles/:id/deactivate:
+    patch:
+      description: Desactiva un rol.
+      parameters:
+      - description: Resource ID (UUID)
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/internal_web_controllers_http.SwaggerOKFlagResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/internal_web_controllers_http.SwaggerErrorResponse'
+      security:
+      - BearerAuth: []
+      summary: DeactivateRole
+      tags:
+      - security
+  /api/v1/roles/:id/permissions:
+    get:
+      description: Obtiene los permisos asignados a un rol.
+      parameters:
+      - description: Resource ID (UUID)
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/internal_web_controllers_http.SwaggerRolePermissionsResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/internal_web_controllers_http.SwaggerErrorResponse'
+      security:
+      - BearerAuth: []
+      summary: GetRolePermissions
+      tags:
+      - security
+    put:
+      consumes:
+      - application/json
+      description: Reemplaza los permisos asignados a un rol.
+      parameters:
+      - description: Role permissions payload
+        in: body
+        name: body
+        required: true
+        schema:
+          $ref: '#/definitions/internal_web_controllers_http.SwaggerReplaceRolePermissionsRequest'
+      - description: Resource ID (UUID)
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/internal_web_controllers_http.SwaggerOKFlagResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/internal_web_controllers_http.SwaggerErrorResponse'
+      security:
+      - BearerAuth: []
+      summary: SetRolePermissions
+      tags:
+      - security
+  /api/v1/sales:
+    get:
+      description: Lista paginada de ventas con búsqueda y orden opcional.
+      parameters:
+      - default: 1
+        description: Page
+        in: query
+        name: page
+        type: integer
+      - default: 25
+        description: Page size
+        in: query
+        name: pageSize
+        type: integer
+      - description: Search text
+        in: query
+        name: q
+        type: string
+      - description: Sort field
+        in: query
+        name: sort
+        type: string
+      - description: Sort direction
+        enum:
+        - asc
+        - desc
+        in: query
+        name: dir
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/internal_web_controllers_http.SwaggerSaleListResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/internal_web_controllers_http.SwaggerErrorResponse'
+      security:
+      - BearerAuth: []
+      summary: ListSales
+      tags:
+      - sales
+    post:
+      consumes:
+      - application/json
+      description: Crea una nueva venta.
+      parameters:
+      - description: Create sale payload
+        in: body
+        name: body
+        required: true
+        schema:
+          $ref: '#/definitions/internal_web_controllers_http.SwaggerCreateSaleRequest'
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Created
+          schema:
+            $ref: '#/definitions/internal_web_controllers_http.SwaggerSaleResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/internal_web_controllers_http.SwaggerErrorResponse'
+      security:
+      - BearerAuth: []
+      summary: CreateSale
+      tags:
+      - sales
+  /api/v1/sales/:id:
+    get:
+      description: Obtiene una venta por identificador.
+      parameters:
+      - description: Resource ID (UUID)
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/internal_web_controllers_http.SwaggerSaleDetailResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/internal_web_controllers_http.SwaggerErrorResponse'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/internal_web_controllers_http.SwaggerErrorResponse'
+      security:
+      - BearerAuth: []
+      summary: GetSale
+      tags:
+      - sales
+  /api/v1/sales/:id/payments:
+    post:
+      consumes:
+      - application/json
+      description: Registra un pago para una venta.
+      parameters:
+      - description: Register payment payload
+        in: body
+        name: body
+        required: true
+        schema:
+          $ref: '#/definitions/internal_web_controllers_http.SwaggerRegisterSalePaymentRequest'
+      - description: Resource ID (UUID)
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/internal_web_controllers_http.SwaggerSalePaymentResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/internal_web_controllers_http.SwaggerErrorResponse'
+      security:
+      - BearerAuth: []
+      summary: RegisterSalePayment
+      tags:
+      - sales
+  /api/v1/settings/:key:
+    get:
+      description: Obtiene una configuración del sistema por clave.
+      parameters:
+      - description: Setting key
+        in: path
+        name: key
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/internal_web_controllers_http.SwaggerSettingResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/internal_web_controllers_http.SwaggerErrorResponse'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/internal_web_controllers_http.SwaggerErrorResponse'
+      security:
+      - BearerAuth: []
+      summary: GetSystemSetting
+      tags:
+      - settings
+    put:
+      consumes:
+      - application/json
+      description: Actualiza el valor de una configuración del sistema.
+      parameters:
+      - description: Set setting payload
+        in: body
+        name: body
+        required: true
+        schema:
+          $ref: '#/definitions/internal_web_controllers_http.SwaggerSetSettingRequest'
+      - description: Setting key
+        in: path
+        name: key
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/internal_web_controllers_http.SwaggerOKFlagResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/internal_web_controllers_http.SwaggerErrorResponse'
+      security:
+      - BearerAuth: []
+      summary: SetSystemSetting
+      tags:
+      - settings
+  /api/v1/submenus:
+    get:
+      description: Lista paginada de submenús con búsqueda y orden opcional.
+      parameters:
+      - default: 1
+        description: Page
+        in: query
+        name: page
+        type: integer
+      - default: 25
+        description: Page size
+        in: query
+        name: pageSize
+        type: integer
+      - description: Search text
+        in: query
+        name: q
+        type: string
+      - description: Sort field
+        in: query
+        name: sort
+        type: string
+      - description: Sort direction
+        enum:
+        - asc
+        - desc
+        in: query
+        name: dir
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/internal_web_controllers_http.SwaggerSubMenuListResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/internal_web_controllers_http.SwaggerErrorResponse'
+      security:
+      - BearerAuth: []
+      summary: ListSubMenus
+      tags:
+      - security
+    post:
+      consumes:
+      - application/json
+      description: Crea un nuevo submenú.
+      parameters:
+      - description: Submenu payload
+        in: body
+        name: body
+        required: true
+        schema:
+          $ref: '#/definitions/internal_web_controllers_http.SwaggerSubMenuRequest'
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Created
+          schema:
+            $ref: '#/definitions/internal_web_controllers_http.SwaggerSubMenuResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/internal_web_controllers_http.SwaggerErrorResponse'
+      security:
+      - BearerAuth: []
+      summary: CreateSubMenu
+      tags:
+      - security
+  /api/v1/submenus/:id:
+    get:
+      description: Obtiene un submenú por identificador.
+      parameters:
+      - description: Resource ID (UUID)
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/internal_web_controllers_http.SwaggerSubMenuResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/internal_web_controllers_http.SwaggerErrorResponse'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/internal_web_controllers_http.SwaggerErrorResponse'
+      security:
+      - BearerAuth: []
+      summary: GetSubMenu
+      tags:
+      - security
+    put:
+      consumes:
+      - application/json
+      description: Actualiza un submenú existente.
+      parameters:
+      - description: Submenu payload
+        in: body
+        name: body
+        required: true
+        schema:
+          $ref: '#/definitions/internal_web_controllers_http.SwaggerSubMenuRequest'
+      - description: Resource ID (UUID)
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/internal_web_controllers_http.SwaggerSubMenuResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/internal_web_controllers_http.SwaggerErrorResponse'
+      security:
+      - BearerAuth: []
+      summary: UpdateSubMenu
+      tags:
+      - security
+  /api/v1/submenus/:id/activate:
+    patch:
+      description: Activa un submenú.
+      parameters:
+      - description: Resource ID (UUID)
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/internal_web_controllers_http.SwaggerOKFlagResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/internal_web_controllers_http.SwaggerErrorResponse'
+      security:
+      - BearerAuth: []
+      summary: ActivateSubMenu
+      tags:
+      - security
+  /api/v1/submenus/:id/deactivate:
+    patch:
+      description: Desactiva un submenú.
+      parameters:
+      - description: Resource ID (UUID)
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/internal_web_controllers_http.SwaggerOKFlagResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/internal_web_controllers_http.SwaggerErrorResponse'
+      security:
+      - BearerAuth: []
+      summary: DeactivateSubMenu
+      tags:
+      - security
+  /api/v1/system/backup/run:
+    post:
+      description: Dispara una tarea de respaldo (placeholder MVP).
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/internal_web_controllers_http.SwaggerBackupResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/internal_web_controllers_http.SwaggerErrorResponse'
+      summary: BackupRun
+      tags:
+      - system
+  /api/v1/system/backup/status:
+    get:
+      description: Retorna el estado del respaldo (placeholder MVP).
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/internal_web_controllers_http.SwaggerBackupResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/internal_web_controllers_http.SwaggerErrorResponse'
+      summary: BackupStatus
+      tags:
+      - system
+  /api/v1/system/info:
+    get:
+      description: Retorna información básica del servicio en ejecución.
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/internal_web_controllers_http.SwaggerSystemInfoResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/internal_web_controllers_http.SwaggerErrorResponse'
+      summary: SystemInfo
+      tags:
+      - system
+  /api/v1/users:
+    get:
+      description: Lista paginada de usuarios con búsqueda y orden opcional.
+      parameters:
+      - default: 1
+        description: Page
+        in: query
+        name: page
+        type: integer
+      - default: 25
+        description: Page size
+        in: query
+        name: pageSize
+        type: integer
+      - description: Search text
+        in: query
+        name: q
+        type: string
+      - description: Sort field
+        in: query
+        name: sort
+        type: string
+      - description: Sort direction
+        enum:
+        - asc
+        - desc
+        in: query
+        name: dir
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/internal_web_controllers_http.SwaggerUserListResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/internal_web_controllers_http.SwaggerErrorResponse'
+      security:
+      - BearerAuth: []
+      summary: ListUsers
+      tags:
+      - security
+    post:
+      consumes:
+      - application/json
+      description: Crea un nuevo usuario.
+      parameters:
+      - description: Create user payload
+        in: body
+        name: body
+        required: true
+        schema:
+          $ref: '#/definitions/internal_web_controllers_http.SwaggerCreateUserRequest'
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Created
+          schema:
+            $ref: '#/definitions/internal_web_controllers_http.SwaggerUserResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/internal_web_controllers_http.SwaggerErrorResponse'
+      security:
+      - BearerAuth: []
+      summary: CreateUser
+      tags:
+      - security
+  /api/v1/users/:id:
+    get:
+      description: Obtiene un usuario por identificador.
+      parameters:
+      - description: Resource ID (UUID)
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/internal_web_controllers_http.SwaggerUserResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/internal_web_controllers_http.SwaggerErrorResponse'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/internal_web_controllers_http.SwaggerErrorResponse'
+      security:
+      - BearerAuth: []
+      summary: GetUser
+      tags:
+      - security
+    put:
+      consumes:
+      - application/json
+      description: Actualiza un usuario existente.
+      parameters:
+      - description: Update user payload
+        in: body
+        name: body
+        required: true
+        schema:
+          $ref: '#/definitions/internal_web_controllers_http.SwaggerUpdateUserRequest'
+      - description: Resource ID (UUID)
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/internal_web_controllers_http.SwaggerUserResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/internal_web_controllers_http.SwaggerErrorResponse'
+      security:
+      - BearerAuth: []
+      summary: UpdateUser
+      tags:
+      - security
+  /api/v1/users/:id/activate:
+    patch:
+      description: Activa un usuario.
+      parameters:
+      - description: Resource ID (UUID)
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/internal_web_controllers_http.SwaggerOKFlagResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/internal_web_controllers_http.SwaggerErrorResponse'
+      security:
+      - BearerAuth: []
+      summary: ActivateUser
+      tags:
+      - security
+  /api/v1/users/:id/deactivate:
+    patch:
+      description: Desactiva un usuario.
+      parameters:
+      - description: Resource ID (UUID)
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/internal_web_controllers_http.SwaggerOKFlagResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/internal_web_controllers_http.SwaggerErrorResponse'
+      security:
+      - BearerAuth: []
+      summary: DeactivateUser
+      tags:
+      - security
+  /api/v1/users/:id/overrides:
+    get:
+      description: Lista paginada de overrides de usuario con búsqueda y orden opcional.
+      parameters:
+      - default: 1
+        description: Page
+        in: query
+        name: page
+        type: integer
+      - default: 25
+        description: Page size
+        in: query
+        name: pageSize
+        type: integer
+      - description: Search text
+        in: query
+        name: q
+        type: string
+      - description: Sort field
+        in: query
+        name: sort
+        type: string
+      - description: Sort direction
+        enum:
+        - asc
+        - desc
+        in: query
+        name: dir
+        type: string
+      - description: Resource ID (UUID)
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/internal_web_controllers_http.SwaggerOverrideListResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/internal_web_controllers_http.SwaggerErrorResponse'
+      security:
+      - BearerAuth: []
+      summary: ListUserOverrides
+      tags:
+      - security
+    post:
+      consumes:
+      - application/json
+      description: Crea un override para un usuario.
+      parameters:
+      - description: Create override payload
+        in: body
+        name: body
+        required: true
+        schema:
+          $ref: '#/definitions/internal_web_controllers_http.SwaggerOverrideItemRequest'
+      - description: Resource ID (UUID)
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Created
+          schema:
+            $ref: '#/definitions/internal_web_controllers_http.SwaggerOverrideResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/internal_web_controllers_http.SwaggerErrorResponse'
+      security:
+      - BearerAuth: []
+      summary: CreateUserOverride
+      tags:
+      - security
+    put:
+      consumes:
+      - application/json
+      description: Reemplaza en bloque los overrides de un usuario.
+      parameters:
+      - description: Replace overrides payload
+        in: body
+        name: body
+        required: true
+        schema:
+          $ref: '#/definitions/internal_web_controllers_http.SwaggerReplaceOverridesRequest'
+      - description: Resource ID (UUID)
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/internal_web_controllers_http.SwaggerOKFlagResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/internal_web_controllers_http.SwaggerErrorResponse'
+      security:
+      - BearerAuth: []
+      summary: ReplaceUserOverrides
+      tags:
+      - security
+  /api/v1/users/:id/overrides/:overrideId:
+    delete:
+      description: Elimina un override de usuario por identificador.
+      parameters:
+      - description: Resource ID (UUID)
+        in: path
+        name: id
+        required: true
+        type: string
+      - description: Override ID (UUID)
+        in: path
+        name: overrideId
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/internal_web_controllers_http.SwaggerOKFlagResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/internal_web_controllers_http.SwaggerErrorResponse'
+      security:
+      - BearerAuth: []
+      summary: DeleteUserOverride
+      tags:
+      - security
+  /api/v1/users/:id/password:
+    patch:
+      consumes:
+      - application/json
+      description: Actualiza la contraseña de un usuario.
+      parameters:
+      - description: Set password payload
+        in: body
+        name: body
+        required: true
+        schema:
+          $ref: '#/definitions/internal_web_controllers_http.SwaggerSetPasswordRequest'
+      - description: Resource ID (UUID)
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/internal_web_controllers_http.SwaggerOKFlagResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/internal_web_controllers_http.SwaggerErrorResponse'
+      security:
+      - BearerAuth: []
+      summary: SetUserPassword
+      tags:
+      - security
+  /api/v1/users/:id/roles:
+    get:
+      description: Obtiene los roles asignados a un usuario.
+      parameters:
+      - description: Resource ID (UUID)
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/internal_web_controllers_http.SwaggerUserRolesResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/internal_web_controllers_http.SwaggerErrorResponse'
+      security:
+      - BearerAuth: []
+      summary: GetUserRoles
+      tags:
+      - security
+    put:
+      consumes:
+      - application/json
+      description: Reemplaza los roles asignados a un usuario.
+      parameters:
+      - description: Set primary role payload
+        in: body
+        name: body
+        required: true
+        schema:
+          $ref: '#/definitions/internal_web_controllers_http.SwaggerSetPrimaryRoleRequest'
+      - description: Resource ID (UUID)
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/internal_web_controllers_http.SwaggerOKFlagResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/internal_web_controllers_http.SwaggerErrorResponse'
+      security:
+      - BearerAuth: []
+      summary: SetUserRoles
+      tags:
+      - security
+  /api/v1/work-orders:
+    get:
+      description: Lista paginada de órdenes de trabajo con búsqueda y orden opcional.
+      parameters:
+      - default: 1
+        description: Page
+        in: query
+        name: page
+        type: integer
+      - default: 25
+        description: Page size
+        in: query
+        name: pageSize
+        type: integer
+      - description: Search text
+        in: query
+        name: q
+        type: string
+      - description: Sort field
+        in: query
+        name: sort
+        type: string
+      - description: Sort direction
+        enum:
+        - asc
+        - desc
+        in: query
+        name: dir
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/internal_web_controllers_http.SwaggerWorkOrderListResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/internal_web_controllers_http.SwaggerErrorResponse'
+      security:
+      - BearerAuth: []
+      summary: ListWorkOrders
+      tags:
+      - work-orders
+    post:
+      consumes:
+      - application/json
+      description: Crea una nueva orden de trabajo.
+      parameters:
+      - description: Create work order payload
+        in: body
+        name: body
+        required: true
+        schema:
+          $ref: '#/definitions/internal_web_controllers_http.SwaggerCreateWorkOrderRequest'
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Created
+          schema:
+            $ref: '#/definitions/internal_web_controllers_http.SwaggerWorkOrderResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/internal_web_controllers_http.SwaggerErrorResponse'
+      security:
+      - BearerAuth: []
+      summary: CreateWorkOrder
+      tags:
+      - work-orders
+  /api/v1/work-orders/:id:
+    get:
+      description: Obtiene una orden de trabajo por identificador.
+      parameters:
+      - description: Resource ID (UUID)
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/internal_web_controllers_http.SwaggerWorkOrderResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/internal_web_controllers_http.SwaggerErrorResponse'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/internal_web_controllers_http.SwaggerErrorResponse'
+      security:
+      - BearerAuth: []
+      summary: GetWorkOrder
+      tags:
+      - work-orders
+    put:
+      consumes:
+      - application/json
+      description: Actualiza una orden de trabajo existente.
+      parameters:
+      - description: Update work order payload
+        in: body
+        name: body
+        required: true
+        schema:
+          $ref: '#/definitions/internal_web_controllers_http.SwaggerUpdateWorkOrderRequest'
+      - description: Resource ID (UUID)
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/internal_web_controllers_http.SwaggerWorkOrderResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/internal_web_controllers_http.SwaggerErrorResponse'
+      security:
+      - BearerAuth: []
+      summary: UpdateWorkOrder
+      tags:
+      - work-orders
+  /api/v1/workers:
+    get:
+      description: Lista paginada de trabajadores con búsqueda y orden opcional.
+      parameters:
+      - default: 1
+        description: Page
+        in: query
+        name: page
+        type: integer
+      - default: 25
+        description: Page size
+        in: query
+        name: pageSize
+        type: integer
+      - description: Search text
+        in: query
+        name: q
+        type: string
+      - description: Sort field
+        in: query
+        name: sort
+        type: string
+      - description: Sort direction
+        enum:
+        - asc
+        - desc
+        in: query
+        name: dir
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/internal_web_controllers_http.SwaggerWorkerListResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/internal_web_controllers_http.SwaggerErrorResponse'
+      security:
+      - BearerAuth: []
+      summary: ListWorkers
+      tags:
+      - workers
+    post:
+      consumes:
+      - application/json
+      description: Crea un nuevo trabajador.
+      parameters:
+      - description: Create worker payload
+        in: body
+        name: body
+        required: true
+        schema:
+          $ref: '#/definitions/internal_web_controllers_http.SwaggerCreateWorkerRequest'
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Created
+          schema:
+            $ref: '#/definitions/internal_web_controllers_http.SwaggerWorkerResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/internal_web_controllers_http.SwaggerErrorResponse'
+      security:
+      - BearerAuth: []
+      summary: CreateWorker
+      tags:
+      - workers
+  /api/v1/workers/:id:
+    get:
+      description: Obtiene un trabajador por identificador.
+      parameters:
+      - description: Resource ID (UUID)
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/internal_web_controllers_http.SwaggerWorkerResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/internal_web_controllers_http.SwaggerErrorResponse'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/internal_web_controllers_http.SwaggerErrorResponse'
+      security:
+      - BearerAuth: []
+      summary: GetWorker
+      tags:
+      - workers
+    put:
+      consumes:
+      - application/json
+      description: Actualiza un trabajador existente.
+      parameters:
+      - description: Update worker payload
+        in: body
+        name: body
+        required: true
+        schema:
+          $ref: '#/definitions/internal_web_controllers_http.SwaggerUpdateWorkerRequest'
+      - description: Resource ID (UUID)
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/internal_web_controllers_http.SwaggerWorkerResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/internal_web_controllers_http.SwaggerErrorResponse'
+      security:
+      - BearerAuth: []
+      summary: UpdateWorker
+      tags:
+      - workers
+  /api/v1/workers/:id/activate:
+    patch:
+      description: Activa un trabajador.
+      parameters:
+      - description: Resource ID (UUID)
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/internal_web_controllers_http.SwaggerOKFlagResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/internal_web_controllers_http.SwaggerErrorResponse'
+      security:
+      - BearerAuth: []
+      summary: ActivateWorker
+      tags:
+      - workers
+  /api/v1/workers/:id/deactivate:
+    patch:
+      description: Desactiva un trabajador.
+      parameters:
+      - description: Resource ID (UUID)
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/internal_web_controllers_http.SwaggerOKFlagResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/internal_web_controllers_http.SwaggerErrorResponse'
+      security:
+      - BearerAuth: []
+      summary: DeactivateWorker
+      tags:
+      - workers
+  /api/v1/workers/pay-commissions:
+    post:
+      consumes:
+      - application/json
+      description: Ejecuta el pago de comisiones pendientes.
+      parameters:
+      - description: Pay commissions payload
+        in: body
+        name: body
+        required: true
+        schema:
+          $ref: '#/definitions/internal_web_controllers_http.SwaggerPayCommissionRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/internal_web_controllers_http.SwaggerOKFlagResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/internal_web_controllers_http.SwaggerErrorResponse'
+      security:
+      - BearerAuth: []
+      summary: PayCommissions
+      tags:
+      - workers
+  /api/v1/workers/pay-salary:
+    post:
+      consumes:
+      - application/json
+      description: Ejecuta el pago de salario.
+      parameters:
+      - description: Pay salary payload
+        in: body
+        name: body
+        required: true
+        schema:
+          $ref: '#/definitions/internal_web_controllers_http.SwaggerPaySalaryRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/internal_web_controllers_http.SwaggerOKFlagResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/internal_web_controllers_http.SwaggerErrorResponse'
+      security:
+      - BearerAuth: []
+      summary: PaySalary
+      tags:
+      - workers
+securityDefinitions:
+  BearerAuth:
+    in: header
+    name: Authorization
+    type: apiKey
+swagger: "2.0"

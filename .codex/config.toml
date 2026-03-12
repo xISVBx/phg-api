@@ -1,0 +1,32 @@
+# Codex project configuration (operational conventions)
+
+[project]
+name = "photogallery-api-go"
+language = "go"
+architecture = "dilogum"
+api_base_path = "/api/v1"
+
+[docs]
+swagger_enabled = true
+swagger_generator = "swag"
+swagger_command = "make swag"
+swagger_ui_path = "/swagger/index.html"
+scalar_ui_path = "/scalar"
+
+[errors]
+format = "rfc7807"
+content_type = "application/problem+json"
+fields_required = ["type", "title", "status", "detail", "instance"]
+fields_extensions = ["code", "errors"]
+
+[codegen]
+repository_split = ["repository.go", "read.go", "write.go", "statistics.go", "reporting.go"]
+usecase_one_file_per_action = true
+dto_one_file_per_type = true
+entity_one_file_per_type = true
+enum_one_file_per_type = true
+
+[tests]
+prefer_integration = true
+dsn_env = "DATABASE_DSN_TEST"
+main_command = "make test-all"
