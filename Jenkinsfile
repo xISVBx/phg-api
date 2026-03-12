@@ -9,7 +9,7 @@ pipeline {
         stage('Probar conexion SSH') {
             steps {
                 sh '''
-                    ssh hostinger "
+                    ssh root@187.124.147.66 "
                         echo Conexion_OK &&
                         whoami &&
                         hostname &&
