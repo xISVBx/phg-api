@@ -25,7 +25,7 @@ pipeline {
                 sh '''
                     ssh -o StrictHostKeyChecking=no root@187.124.147.66 "
                         set -e
-                        /opt/scripts/deploy-phg-api.sh
+                        /root/opt/scripts/deploy-phg-api.sh
                     "
                 '''
             }
