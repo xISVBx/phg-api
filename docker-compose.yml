@@ -36,6 +36,26 @@ services:
       - ./docker/pgadmin/pgpass:/pgpass:ro
     restart: unless-stopped
 
+  bootstrap:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: photogallery_bootstrap
+    profiles: ["bootstrap"]
+    environment:
+      APP_ENV: ${APP_ENV:-docker}
+      DATABASE_DSN: host=db user=${POSTGRES_USER:-postgres} password=${POSTGRES_PASSWORD:-postgres} dbname=${POSTGRES_DB:-photogallery} port=5432 sslmode=disable
+      BOOTSTRAP_MANUAL_ENABLED: ${BOOTSTRAP_MANUAL_ENABLED:-false}
+      BOOTSTRAP_ADMIN_USERNAME: ${BOOTSTRAP_ADMIN_USERNAME:-}
+      BOOTSTRAP_ADMIN_PASSWORD: ${BOOTSTRAP_ADMIN_PASSWORD:-}
+      BOOTSTRAP_ADMIN_EMAIL: ${BOOTSTRAP_ADMIN_EMAIL:-}
+      BOOTSTRAP_ADMIN_FULL_NAME: ${BOOTSTRAP_ADMIN_FULL_NAME:-Administrador General}
+    depends_on:
+      db:
+        condition: service_healthy
+    command: ["/app/bootstrap"]
+    restart: "no"
+
   app:
     build:
       context: .
@@ -51,6 +71,13 @@ services:
       FILES_MAX_SIZE_MB: ${FILES_MAX_SIZE_MB:-25}
       FILES_ALLOWED_MIME: ${FILES_ALLOWED_MIME:-image/jpeg,image/png,application/pdf}
       CUSTOMER_KEY_MODE: ${CUSTOMER_KEY_MODE:-both}
+      BOOTSTRAP_AUTO_ENABLED: ${BOOTSTRAP_AUTO_ENABLED:-false}
+      BOOTSTRAP_MANUAL_ENABLED: ${BOOTSTRAP_MANUAL_ENABLED:-false}
+      BOOTSTRAP_TOKEN: ${BOOTSTRAP_TOKEN:-}
+      BOOTSTRAP_ADMIN_USERNAME: ${BOOTSTRAP_ADMIN_USERNAME:-}
+      BOOTSTRAP_ADMIN_PASSWORD: ${BOOTSTRAP_ADMIN_PASSWORD:-}
+      BOOTSTRAP_ADMIN_EMAIL: ${BOOTSTRAP_ADMIN_EMAIL:-}
+      BOOTSTRAP_ADMIN_FULL_NAME: ${BOOTSTRAP_ADMIN_FULL_NAME:-Administrador General}
     ports:
       - "${APP_PORT:-8080}:8080"
     depends_on:

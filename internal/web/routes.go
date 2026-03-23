@@ -8,13 +8,13 @@ import (
 	httpctl "photogallery/api_go/internal/web/controllers/http"
 )
 
-func RegisterRoutes(r *gin.Engine, c *httpctl.Controller, auth gin.HandlerFunc) {
+func RegisterRoutes(r *gin.Engine, c *httpctl.Controller, bootstrap *httpctl.BootstrapController, auth gin.HandlerFunc) {
 	r.GET("/swagger/*any", ginSwagger.WrapHandler(swaggerFiles.Handler))
 	r.GET("/scalar", scalarReferenceUI)
 	r.GET("/scalar/", scalarReferenceUI)
 
 	v1 := r.Group("/api/v1")
-	registerSystemPublicRoutes(v1, c)
+	registerSystemPublicRoutes(v1, c, bootstrap)
 	registerAuthPublicRoutes(v1, c)
 
 	secure := v1.Group("")

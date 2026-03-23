@@ -6,9 +6,12 @@ import (
 	httpctl "photogallery/api_go/internal/web/controllers/http"
 )
 
-func registerSystemPublicRoutes(v1 *gin.RouterGroup, c *httpctl.Controller) {
+func registerSystemPublicRoutes(v1 *gin.RouterGroup, c *httpctl.Controller, bootstrap *httpctl.BootstrapController) {
 	v1.GET("/health", c.Health)
 	v1.GET("/system/info", c.SystemInfo)
+	if bootstrap != nil {
+		v1.POST("/system/bootstrap/run", bootstrap.RunBootstrap)
+	}
 	v1.POST("/system/backup/run", c.BackupRun)
 	v1.GET("/system/backup/status", c.BackupStatus)
 }

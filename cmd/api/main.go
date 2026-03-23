@@ -11,6 +11,7 @@ import (
 
 	_ "photogallery/api_go/docs/swagger"
 	"photogallery/api_go/internal/application/use_cases"
+	"photogallery/api_go/internal/infrastructure/bootstrap"
 	"photogallery/api_go/internal/infrastructure/config"
 	"photogallery/api_go/internal/infrastructure/persistence"
 	"photogallery/api_go/internal/infrastructure/seed"
@@ -38,6 +39,13 @@ func main() {
 	passSvc := infraServices.NewPasswordService()
 	fileSvc := infraServices.NewLocalFileStorageService(cfg.FilesBasePath, cfg.FilesMaxSizeMB, cfg.FilesAllowedMIME)
 	notifSvc := infraServices.NewNoopNotificationService()
+	bootstrapSvc := bootstrap.NewService(db, cfg, passSvc)
+
+	bootstrapResult, err := bootstrapSvc.RunOnStartup(context.Background())
+	if err != nil {
+		log.Fatalf("bootstrap startup: %v", err)
+	}
+	log.Printf("bootstrap startup: skipped=%t reason=%s", bootstrapResult.Skipped, bootstrapResult.Reason)
 
 	if err := seed.RunDevSeed(context.Background(), db, cfg, passSvc); err != nil {
 		log.Fatalf("seed dev: %v", err)
@@ -45,7 +53,7 @@ func main() {
 
 	uc := use_cases.NewUseCases(uowImpl, jwtSvc, passSvc, fileSvc, notifSvc)
 
-	r := web.NewServer(uc, jwtSvc, cfg.CORSAllowedOrigins)
+	r := web.NewServer(uc, jwtSvc, cfg.CORSAllowedOrigins, bootstrapSvc)
 	srv := &http.Server{Addr: ":" + cfg.Port, Handler: r}
 
 	go func() {

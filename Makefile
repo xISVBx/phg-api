@@ -1,7 +1,7 @@
 GOCACHE := $(CURDIR)/.cache/go-build
 GOMODCACHE := $(CURDIR)/.cache/gomod
 
-.PHONY: run swag test test-integration test-db-up test-db-down test-all seed-start seed-reset generate-entity generate-usecase docker-up docker-down docker-logs docker-logs-tail docker-ps docker-reset restart restart-build db-recreate
+.PHONY: run swag test test-integration test-db-up test-db-down test-all seed-start seed-reset bootstrap generate-entity generate-usecase docker-up docker-down docker-logs docker-logs-tail docker-bootstrap docker-ps docker-reset restart restart-build db-recreate
 
 run:
 	GOCACHE=$(GOCACHE) GOMODCACHE=$(GOMODCACHE) go run ./cmd/api
@@ -51,6 +51,9 @@ seed-reset:
 seed-start:
 	GOCACHE=$(GOCACHE) GOMODCACHE=$(GOMODCACHE) go run ./cmd/seedstart
 
+bootstrap:
+	GOCACHE=$(GOCACHE) GOMODCACHE=$(GOMODCACHE) go run ./cmd/bootstrap
+
 generate-entity:
 	bash cmd/scripts/generate_entity.sh $(name)
 
@@ -68,6 +71,9 @@ docker-logs:
 
 docker-logs-tail:
 	docker compose logs --tail=120 app
+
+docker-bootstrap:
+	docker compose --profile bootstrap run --rm bootstrap
 
 docker-ps:
 	docker compose ps

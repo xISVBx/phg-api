@@ -2,15 +2,28 @@ package persistence
 
 import (
 	"fmt"
+	"log"
+	"os"
+	"time"
 
 	"gorm.io/driver/postgres"
 	"gorm.io/gorm"
+	"gorm.io/gorm/logger"
 
 	"photogallery/api_go/internal/domain/entities"
 )
 
 func NewDatabase(dsn string) (*gorm.DB, error) {
-	db, err := gorm.Open(postgres.Open(dsn), &gorm.Config{})
+	gormLogger := logger.New(
+		log.New(os.Stdout, "", log.LstdFlags),
+		logger.Config{
+			SlowThreshold:             time.Second,
+			LogLevel:                  logger.Warn,
+			IgnoreRecordNotFoundError: true,
+			Colorful:                  false,
+		},
+	)
+	db, err := gorm.Open(postgres.Open(dsn), &gorm.Config{Logger: gormLogger})
 	if err != nil {
 		return nil, err
 	}

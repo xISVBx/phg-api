@@ -71,7 +71,7 @@ func NewIntegrationEnv(t *testing.T) *IntegrationEnv {
 	gin.SetMode(gin.ReleaseMode)
 	gin.DefaultWriter = io.Discard
 	gin.DefaultErrorWriter = io.Discard
-	r := web.NewServer(uc, jwtSvc, []string{"http://localhost:5173"})
+	r := web.NewServer(uc, jwtSvc, []string{"http://localhost:5173"}, nil)
 
 	return &IntegrationEnv{DB: db, UoW: uowImpl, UseCases: uc, JWT: jwtSvc, Router: r, ActorUser: actor}
 }

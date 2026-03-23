@@ -15,6 +15,34 @@ Backend MVP en Go + Gin + PostgreSQL + GORM con arquitectura por capas tipo Dilo
 1. Copiar `.env.example` a `.env` y ajustar variables.
 2. Definir `FILES_BASE_PATH` (obligatorio para uploads).
 
+### Bootstrap inicial
+El bootstrap reutiliza la misma lógica en tres puntos:
+- arranque automático de la app solo si `APP_ENV=prod|production` y `BOOTSTRAP_AUTO_ENABLED=true`
+- endpoint manual excepcional `POST /api/v1/system/bootstrap/run`
+- runner Docker one-shot `make docker-bootstrap`
+
+Variables:
+- `BOOTSTRAP_AUTO_ENABLED`
+- `BOOTSTRAP_MANUAL_ENABLED`
+- `BOOTSTRAP_TOKEN` solo para el endpoint manual
+- `BOOTSTRAP_ADMIN_USERNAME`
+- `BOOTSTRAP_ADMIN_PASSWORD`
+- `BOOTSTRAP_ADMIN_EMAIL`
+- `BOOTSTRAP_ADMIN_FULL_NAME`
+
+El bootstrap crea y deja idempotentes:
+- roles base (`Administrador`, `Vendedor`)
+- permisos base (`READ`, `CREATE`, `UPDATE`, `DELETE`, `EXECUTE`)
+- menús y submenús base
+- grants RBAC base
+- usuario admin inicial con rol primario `Administrador`
+
+Propiedades:
+- no duplica datos si ya existen
+- no sobrescribe la contraseña del admin si el usuario ya existe
+- activa el usuario admin si existe pero estaba inactivo
+- usa una transacción con `pg_try_advisory_xact_lock(...)` para evitar carreras entre instancias
+
 ### Seed de desarrollo (opcional)
 El seed solo corre cuando:
 - `APP_ENV=dev` o `APP_ENV=development`
@@ -83,6 +111,7 @@ Si ya habías levantado pgAdmin antes, ejecuta `make docker-reset` para recrear 
 Comandos útiles:
 ```bash
 make docker-ps
+make docker-bootstrap
 make docker-logs
 make docker-logs-tail
 make restart
@@ -91,6 +120,44 @@ make docker-reset
 make docker-down
 ```
 El esquema se gestiona automáticamente con GORM `AutoMigrate` al iniciar la API.
+
+### Ejemplo exacto: arranque automático en prod
+```bash
+export APP_ENV=prod
+export BOOTSTRAP_AUTO_ENABLED=true
+export BOOTSTRAP_ADMIN_USERNAME=admin
+export BOOTSTRAP_ADMIN_PASSWORD='Admin123*'
+export BOOTSTRAP_ADMIN_EMAIL=admin@photogallery.local
+export BOOTSTRAP_ADMIN_FULL_NAME='Administrador General'
+export BOOTSTRAP_MANUAL_ENABLED=true
+export BOOTSTRAP_TOKEN='super-bootstrap-token'
+make docker-up
+```
+
+### Ejemplo exacto: bootstrap manual por endpoint
+```bash
+curl -X POST http://localhost:8080/api/v1/system/bootstrap/run \
+  -H 'X-Bootstrap-Token: super-bootstrap-token'
+```
+
+### Ejemplo exacto: bootstrap one-shot en Docker sin Go local
+```bash
+export BOOTSTRAP_MANUAL_ENABLED=true
+export BOOTSTRAP_ADMIN_USERNAME=admin
+export BOOTSTRAP_ADMIN_PASSWORD='Admin123*'
+export BOOTSTRAP_ADMIN_EMAIL=admin@photogallery.local
+make docker-bootstrap
+```
+
+### Prueba de idempotencia
+```bash
+curl -X POST http://localhost:8080/api/v1/system/bootstrap/run \
+  -H 'X-Bootstrap-Token: super-bootstrap-token'
+
+curl -X POST http://localhost:8080/api/v1/system/bootstrap/run \
+  -H 'X-Bootstrap-Token: super-bootstrap-token'
+```
+La segunda ejecución debe registrar recursos existentes y no crear duplicados.
 
 ## Swagger
 ```bash

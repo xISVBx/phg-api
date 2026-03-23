@@ -9,22 +9,29 @@ import (
 )
 
 type Config struct {
-	AppName            string
-	Env                string
-	Port               string
-	CORSAllowedOrigins []string
-	JWTSecret          string
-	JWTExpireSeconds   int64
-	DBDSN              string
-	FilesBasePath      string
-	FilesMaxSizeMB     int64
-	FilesAllowedMIME   []string
-	CustomerKeyMode    string
-	SeedEnabled        bool
-	SeedAdminUser      string
-	SeedAdminPass      string
-	SeedSellerUser     string
-	SeedSellerPass     string
+	AppName                string
+	Env                    string
+	Port                   string
+	CORSAllowedOrigins     []string
+	JWTSecret              string
+	JWTExpireSeconds       int64
+	DBDSN                  string
+	FilesBasePath          string
+	FilesMaxSizeMB         int64
+	FilesAllowedMIME       []string
+	CustomerKeyMode        string
+	SeedEnabled            bool
+	SeedAdminUser          string
+	SeedAdminPass          string
+	SeedSellerUser         string
+	SeedSellerPass         string
+	BootstrapAutoEnabled   bool
+	BootstrapManualEnabled bool
+	BootstrapToken         string
+	BootstrapAdminUser     string
+	BootstrapAdminPass     string
+	BootstrapAdminEmail    string
+	BootstrapAdminName     string
 }
 
 func Load() *Config {
@@ -34,22 +41,29 @@ func Load() *Config {
 	allowed := strings.Split(getenv("FILES_ALLOWED_MIME", "image/jpeg,image/png,application/pdf"), ",")
 	corsOrigins := splitCSV(getenv("CORS_ALLOWED_ORIGINS", "http://localhost:5173,http://127.0.0.1:5173"))
 	return &Config{
-		AppName:            getenv("APP_NAME", "photo-gallery-api"),
-		Env:                getenv("APP_ENV", "dev"),
-		Port:               getenv("APP_PORT", "8080"),
-		CORSAllowedOrigins: corsOrigins,
-		JWTSecret:          getenv("JWT_SECRET", "change_me"),
-		JWTExpireSeconds:   expire,
-		DBDSN:              getenv("DATABASE_DSN", "host=localhost user=postgres password=postgres dbname=photogallery port=5432 sslmode=disable"),
-		FilesBasePath:      getenv("FILES_BASE_PATH", "./storage"),
-		FilesMaxSizeMB:     maxSize,
-		FilesAllowedMIME:   allowed,
-		CustomerKeyMode:    getenv("CUSTOMER_KEY_MODE", "both"),
-		SeedEnabled:        getenvBool("SEED_ENABLED", false),
-		SeedAdminUser:      getenv("SEED_ADMIN_USERNAME", "admin"),
-		SeedAdminPass:      getenv("SEED_ADMIN_PASSWORD", "Admin123*"),
-		SeedSellerUser:     getenv("SEED_SELLER_USERNAME", "vendedor"),
-		SeedSellerPass:     getenv("SEED_SELLER_PASSWORD", "Vendedor123*"),
+		AppName:                getenv("APP_NAME", "photo-gallery-api"),
+		Env:                    getenv("APP_ENV", "dev"),
+		Port:                   getenv("APP_PORT", "8080"),
+		CORSAllowedOrigins:     corsOrigins,
+		JWTSecret:              getenv("JWT_SECRET", "change_me"),
+		JWTExpireSeconds:       expire,
+		DBDSN:                  getenv("DATABASE_DSN", "host=localhost user=postgres password=postgres dbname=photogallery port=5432 sslmode=disable"),
+		FilesBasePath:          getenv("FILES_BASE_PATH", "./storage"),
+		FilesMaxSizeMB:         maxSize,
+		FilesAllowedMIME:       allowed,
+		CustomerKeyMode:        getenv("CUSTOMER_KEY_MODE", "both"),
+		SeedEnabled:            getenvBool("SEED_ENABLED", false),
+		SeedAdminUser:          getenv("SEED_ADMIN_USERNAME", "admin"),
+		SeedAdminPass:          getenv("SEED_ADMIN_PASSWORD", "Admin123*"),
+		SeedSellerUser:         getenv("SEED_SELLER_USERNAME", "vendedor"),
+		SeedSellerPass:         getenv("SEED_SELLER_PASSWORD", "Vendedor123*"),
+		BootstrapAutoEnabled:   getenvBool("BOOTSTRAP_AUTO_ENABLED", false),
+		BootstrapManualEnabled: getenvBool("BOOTSTRAP_MANUAL_ENABLED", false),
+		BootstrapToken:         strings.TrimSpace(os.Getenv("BOOTSTRAP_TOKEN")),
+		BootstrapAdminUser:     strings.TrimSpace(os.Getenv("BOOTSTRAP_ADMIN_USERNAME")),
+		BootstrapAdminPass:     os.Getenv("BOOTSTRAP_ADMIN_PASSWORD"),
+		BootstrapAdminEmail:    strings.TrimSpace(os.Getenv("BOOTSTRAP_ADMIN_EMAIL")),
+		BootstrapAdminName:     strings.TrimSpace(getenv("BOOTSTRAP_ADMIN_FULL_NAME", "Administrador General")),
 	}
 }
 
