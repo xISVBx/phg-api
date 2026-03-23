@@ -14,6 +14,7 @@ type Controller struct {
 }
 
 func NewController(uc *use_cases.UseCases) *Controller { return &Controller{uc: uc} }
+
 func parseUUID(c *gin.Context, name string) (uuid.UUID, bool) {
 	id, err := uuid.Parse(c.Param(name))
 	if err != nil {
